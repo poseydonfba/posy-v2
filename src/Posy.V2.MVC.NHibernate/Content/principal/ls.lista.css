@@ -1,0 +1,271 @@
+﻿/* Style padrao */
+
+.ls-cnt-default
+{
+    width: 100%;
+}
+.ls-cnt-default .list-ul
+{
+    list-style-type: none;
+}
+.ls-cnt-default .list-h3
+{
+    font: bold 12px Helvetica, Verdana, sans-serif;
+}
+.ls-cnt-default .list-li .list-img
+{
+    float: left;
+    margin: 0 15px 0 0;
+
+	-webkit-border-radius: 2px; 
+	   -moz-border-radius: 2px; 
+	        border-radius: 2px;
+
+    box-shadow: 0 0 0 2px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 2px 3px 2px 2px rgba(0, 0, 0, 0.05);	            
+}
+.ls-cnt-default .list-li .list-p
+{
+    font: 200 12px/1.5 Tahoma, Times New Roman, serif;
+    width: 65%;
+}
+.ls-cnt-default .list-li
+{
+    padding: 10px;
+    overflow: hidden;
+    border-bottom: solid 1px #e8e8e8;
+    position: relative;
+}
+.ls-cnt-default .list-li:hover
+{
+    background:rgba(242,250,254,.8);
+}
+.ls-cnt-default .lastpost
+{
+    font-weight: normal;
+}
+.ls-cnt-default .totalpost, .ls-cnt-default .autorpost, .ls-cnt-default .ultimopost, .ls-cnt-default .irultimopost
+{
+    width: 120px;
+    max-width: 120px;
+    height: 30px;
+    float: right;
+    margin-top: 0;
+    text-align: center;
+    color: #999;
+}
+.ls-cnt-default .totalpost span, .ls-cnt-default .autorpost span, .ls-cnt-default .ultimopost span, .ls-cnt-default .irultimopost span
+{
+    font-weight: bold;
+    color: #777;
+}
+.ls-cnt-default .list-span-dt
+{
+    margin-left: 10px;
+    color: #ccc;
+    font-weight: normal;
+}
+
+/* Customizados */
+
+/* style lista perfil amigos */
+
+.poseydon-amigos-list-size .list-li .list-img
+{
+    width: 70px;
+    height: 70px;
+}
+.poseydon-amigos-list-size .totalpost, .poseydon-amigos-list-size .autorpost
+{
+    display: none;
+}
+.poseydon-amigos-list-size .list-p
+{
+    font-weight: bold;
+}
+.poseydon-amigos-list-size .list-p span
+{
+    font-style: italic;
+    display: block;
+}
+.poseydon-amigos-list-size .list-li
+{
+    width: 49.5%;
+    display: inline-block;
+}
+.amigos-pendente
+{
+    margin-bottom:20px;
+}
+
+/* style lista comunidade topicos */
+
+.poseydon-forum-list-size .list-ul .list-li
+{
+    padding:3px !important;
+    padding-left:6px !important;
+}
+.poseydon-forum-list-size .list-li .list-img
+{
+    width: 30px;
+    height: 30px;
+}
+.poseydon-forum-list-size .autorpost span, 
+.poseydon-forum-list-size .totalpost span, 
+.poseydon-forum-list-size .ultimopost span, 
+.poseydon-forum-list-size .irultimopost span
+{
+    display:block;
+    margin-top:4px;
+}
+.poseydon-forum-list-size .irultimopost a
+{
+    display:block;
+    margin-top:10px;
+}
+
+/* style lista perfil comunidades */
+
+.poseydon-comunidade-list-size .list-li .list-img
+{
+    width: 30px;
+    height: 30px;
+}
+
+/* style lista cmm pesquisa */
+
+.poseydon-cmm-pesquisa-list-size .list-li .list-img
+{
+    width: 70px;
+    height: 70px;
+}
+.poseydon-cmm-pesquisa-list-size .autorpost span, 
+.poseydon-cmm-pesquisa-list-size .totalpost span, 
+.poseydon-cmm-pesquisa-list-size .ultimopost span, 
+.poseydon-cmm-pesquisa-list-size .irultimopost span
+{
+    display:block;
+    margin-top:4px;
+}
+
+/* style lista cmm topico post */
+
+.poseydon-cmm-post-list-size
+{
+    position: relative;
+    width: 100%;
+}
+.poseydon-cmm-post-list-size .list-li:hover
+{
+    background: #fff;
+}
+.poseydon-cmm-post-list-size .list-li img.list-img
+{
+    width: 70px;
+    height: 70px;
+}
+.poseydon-cmm-post-list-size .list-li .list-p
+{
+    margin-left: 85px;
+    margin-right: 5px;
+    margin-top: 10px;
+
+	color: #4e5665 !important;
+	font-size:12px !important;
+	font-family:Verdana !important;
+	line-height:18px;  
+    width: auto;  
+
+    word-wrap: break-word;
+	overflow:hidden;    	
+}
+
+.poseydon-cmm-post-list-size .seta
+{
+    position: absolute;
+    left: 66px;
+    top: 37px;
+}
+.poseydon-cmm-post-list-size .seta:after
+{
+    content: "";
+    display: table;
+    clear: both;
+}
+.poseydon-cmm-post-list-size .seta:before
+{
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    border: 7px solid transparent;
+    border-right: 7px solid white;
+}
+.cmm-dono
+{
+    color:#990000;
+    font-size:8px;
+    margin-right:8px;
+    letter-spacing:1px;
+    font-weight:bold;
+}
+.cmm-mode
+{
+    color:#009900;
+    font-size:8px;
+    margin-right:8px;
+    letter-spacing:1px;
+    font-weight:bold;
+}
+
+
+/* style lista cmm membros pendente [igual a dos amigos] */
+
+.poseydon-membrospend-list-size .list-li .list-img
+{
+    width: 70px;
+    height: 70px;
+}
+.poseydon-membrospend-list-size .totalpost, .poseydon-membrospend-list-size .autorpost
+{
+    display: none;
+}
+.poseydon-membrospend-list-size .list-p
+{
+    font-weight: bold;
+}
+.poseydon-membrospend-list-size .list-p span
+{
+    font-style: italic;
+    display: block;
+}
+.poseydon-membrospend-list-size .list-li
+{
+    width: 49.5%;
+    display: inline-block;
+}
+
+/* style lista cmm membros [igual a dos amigos] */
+
+.poseydon-membros-list-size .list-li .list-img
+{
+    width: 70px;
+    height: 70px;
+}
+.poseydon-membros-list-size .totalpost, .poseydon-membros-list-size .autorpost
+{
+    display: none;
+}
+.poseydon-membros-list-size .list-p
+{
+    font-weight: bold;
+}
+.poseydon-membros-list-size .list-p span
+{
+    font-style: italic;
+    display: block;
+}
+.poseydon-membros-list-size .list-li
+{
+    width: 49.5%;
+    display: inline-block;
+}

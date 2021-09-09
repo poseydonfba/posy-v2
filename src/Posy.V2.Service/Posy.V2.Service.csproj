@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7BBFD3E4-B338-4EAE-8377-33F1158ADD8B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Posy.V2.Service</RootNamespace>
+    <AssemblyName>Posy.V2.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\AmizadeService.cs" />
+    <Compile Include="Service\ComunidadeService.cs" />
+    <Compile Include="Service\ConnectionService.cs" />
+    <Compile Include="Service\DepoimentoService.cs" />
+    <Compile Include="Service\MembroService.cs" />
+    <Compile Include="Service\ModeradorService.cs" />
+    <Compile Include="Service\PerfilService.cs" />
+    <Compile Include="Service\PostOcultoService.cs" />
+    <Compile Include="Service\PostPerfilBloqueadoService.cs" />
+    <Compile Include="Service\PostPerfilComentarioService.cs" />
+    <Compile Include="Service\PostPerfilService.cs" />
+    <Compile Include="Service\PrivacidadeService.cs" />
+    <Compile Include="Service\RecadoComentarioService.cs" />
+    <Compile Include="Service\RecadoService.cs" />
+    <Compile Include="Service\StorieService.cs" />
+    <Compile Include="Service\TopicoPostService.cs" />
+    <Compile Include="Service\TopicoService.cs" />
+    <Compile Include="Service\UsuarioService.cs" />
+    <Compile Include="Service\VideoComentarioService.cs" />
+    <Compile Include="Service\VideoService.cs" />
+    <Compile Include="Service\VisitantePerfilService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Posy.V2.Domain\Posy.V2.Domain.csproj">
+      <Project>{2afd4c62-a4c1-46d9-bf7b-d372d11cf3ec}</Project>
+      <Name>Posy.V2.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Posy.V2.Infra.CrossCutting.Common\Posy.V2.Infra.CrossCutting.Common.csproj">
+      <Project>{020b662b-e18b-4350-a44f-62e7a8c2578e}</Project>
+      <Name>Posy.V2.Infra.CrossCutting.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

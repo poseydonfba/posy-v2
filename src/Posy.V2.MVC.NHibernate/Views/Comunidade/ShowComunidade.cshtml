@@ -1,0 +1,35 @@
+﻿@using Posy.V2.Infra.CrossCutting.Common.Resources
+@using Posy.V2.MVC.Helpers
+@{Posy.V2.Domain.Entities.Comunidade ComunidadeView = @Posy.V2.MVC.Controllers.BaseControllerComunidade.ComunidadeView; }
+@{
+    Layout = "~/Views/Shared/_PrincipalComunidade.cshtml";
+    ViewBag.Title = "ShowComunidade";
+}
+
+<div class="ms-cnt-blc ms-cnt-cmm">
+    <div class="ms-cnt-tit-blc">
+        <h1 class="ms-tit-blc-txt icon-cmm">@UIConfig.Comunidade</h1>
+        <div class="ms-tit-blc-line"></div>
+    </div>
+    <div class="view-page">
+        <div class='info-perfil'>
+            @UIConfig.Dono: <a href="@FuncaoSite.getUrlNomeIdPerfil(ComunidadeView.Usuario.Perfil.Alias)">@ComunidadeView.Usuario.Perfil.Nome</a><br />
+            @UIConfig.Comunidade: <b>@ComunidadeView.TipoComunidade</b><br />
+            @UIConfig.Categoria: <b>@ComunidadeView.Categoria.Nome</b><br />
+            @UIConfig.CriadaEm <i>@ComunidadeView.Dir</i>
+        </div>
+        @Html.Raw(@ComunidadeView.PerfilHtml)
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $(".view-page").hide().fadeIn("slow");
+
+        });
+
+    </script>
+}

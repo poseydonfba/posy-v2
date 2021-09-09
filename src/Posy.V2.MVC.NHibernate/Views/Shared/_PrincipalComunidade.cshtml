@@ -1,0 +1,69 @@
+﻿@{Posy.V2.Domain.Entities.Perfil PerfilLogged = @Posy.V2.MVC.Controllers.BaseControllerComunidade.PerfilLogged; }
+@{Posy.V2.Domain.Entities.Comunidade ComunidadeView = @Posy.V2.MVC.Controllers.BaseControllerComunidade.ComunidadeView; }
+
+@{
+    Layout = "~/Views/Shared/_Principal.cshtml";
+}
+
+<div class="ms-cnt-glb">
+
+    <section class="columns">
+
+        <div class="ms-cnt-col01 sidebar">
+            <div class="ms-cnt-blc-vazio ms-cnt-blc-perfil">
+                <div class="pf-cnt-foto">
+                    <div class="pf-foto-effect">
+                        @if (ComunidadeView != null)
+                        {
+                            if (Request.IsAuthenticated)
+                            {
+                                <img id="fotoPerfil" src="/Images/cmm/@ComunidadeView.ComunidadeId/1.jpg?@DateTime.Now.ToOADate()" alt="img0" />
+                            }
+                            else
+                            {
+                                <img id="fotoPerfil" src="~/Images/cmm/0.jpg" alt="img0" />
+                            }
+                            <div>
+                                <h2>
+                                    <span id="lblNome" class="lblNome">@ComunidadeView.Nome</span><span>&nbsp;&nbsp;<span id="lblSobrenome" class="lblSobrenome"></span></span>
+                                </h2>
+                                <p>
+                                    <span id="lblFrase" class="lblFrase"></span>
+                                </p>
+                                <!--a href="#">View more</a-->
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="mn-cnt-vert">@Html.Raw(@ViewBag.GetTemplateMenuVerticalComunidadeHtml)</div>
+        </div>
+
+        <div class="ms-cnt-col02">
+            @RenderBody()
+        </div>
+
+        <div class="ms-cnt-col03 sidebar">
+
+            <div class="ms-cnt-blc-vazio ms-cnt-blc-amigos">
+                <div id="containerAmigos" class="resizeBloco1">@Html.Raw(@ViewBag.GetTemplateMembrosHtml)</div>
+            </div>
+
+            <div class="ms-cnt-blc-vazio ms-cnt-blc-cmm">
+                <div id="containerCmm" class="resizeBloco1"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="ms-cnt-rdp footer">
+        <h1>
+            POSEYDON ESPILACOPA<br /><p>REDE SOCIAL</p>
+        </h1>
+    </div>
+
+</div>
+
+@section Scripts {
+    @RenderSection("scripts", required: false)
+}

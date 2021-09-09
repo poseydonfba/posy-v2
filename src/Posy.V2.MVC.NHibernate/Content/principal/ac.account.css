@@ -1,0 +1,81 @@
+﻿.ac-image {
+    background-size: 100% 100%;
+    height: 100vh;
+}
+
+.ac-form {
+    background: #f7f7f7;
+    height: 100vh;
+    color: #999;
+    padding: 5% 5%;
+    overflow:auto;
+}
+
+h1.display-4{
+    font-size:50px;
+    letter-spacing: 0.2em;
+}
+
+textarea, input[type="text"], textarea[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input, .form-control {
+    outline: none;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+}
+
+    textarea:focus, input[type="text"]:focus, textarea[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus, .form-control:focus {
+        border: 1px solid #32373d !important;
+    }
+
+.btn-primary {
+    color: white;
+    background-color: #6b86a6;
+    border-color: #738397;
+}
+
+    .btn-primary:hover {
+        color: white;
+        background-color: #32373d;
+        border-color: #738397;
+    }
+
+    .btn-primary:focus {
+        color: white;
+        background-color: #525c68;
+        border-color: #738397;
+    }
+
+    .btn-primary:not(:disabled):not(.disabled):active {
+        color: white;
+        background-color: #525c68;
+        border-color: #738397;
+    }
+
+a:hover, .btn-link:hover {
+    text-decoration: none;
+    color: #32373d !important;
+}
+
+.btn-link {
+    padding:0;
+}
+
+
+/*textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+    outline: none;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+}*/
+
+
+

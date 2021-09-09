@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=7; IE=8; IE=9; IE=10; IE=11" />
+    <meta http-equiv="content-language" content="pt-br, en-US, fr" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Poseydon Espilacopa" />
+    <meta name="description" content="Rede Social Poseydonrs" />
+    <meta name="keywords" content="sites, web, desenvolvimento" />
+    <meta name="reply-to" content="poseydonfba@hotmail.com" />
+    <meta name="copyright" content="© 2015 Poseydon" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <link rel="shortcut icon" href="~/Images/favicon.ico" type="image/x-icon" />
+    @Styles.Render("~/Content/css/bootstrap")
+    @Styles.Render("~/Content/css/account")
+    @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+        .ac-image {
+            background-image: url(@Url.Content("~/Images/bg3.jpg"));
+        }
+
+        .button.icon:before {
+            background: url(@Url.Content("~/Images/gh-icons.png")) 0 99px no-repeat;
+        }
+    </style>
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-7 ac-image reyes">
+                @*https://una.im/CSSgram/*@
+
+
+
+            </div>
+            <div class="col-sm-5 ac-form">
+
+                <div class="row h-100">
+                    <div class="col-sm-12 my-auto">
+                        @RenderBody()
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/account")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

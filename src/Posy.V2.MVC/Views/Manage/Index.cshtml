@@ -1,0 +1,105 @@
+﻿@using Posy.V2.Infra.CrossCutting.Common.Resources
+@model Posy.V2.Infra.CrossCutting.Identity.Model.IndexViewModel
+@{
+    Layout = "~/Views/Shared/_Account.cshtml";
+    ViewBag.Title = "Gerencie sua conta";
+}
+<h2>@ViewBag.Title</h2>
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4 class="font-weight-light">@UIConfigLogin.AlterarAsSuasConfiguracoesDeConta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@UIConfigLogin.Senha:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink(@UIConfigLogin.TrocarDeSenha, "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink(@UIConfigLogin.DefinirSenhaParaContaLocal, "SetPassword")
+            }
+            ]
+        </dd>
+        <dt>@UIConfigLogin.LoginsExternos:</dt>
+        <dd>
+            @UIConfigLogin.LoginsSociais: @Model.Logins.Count
+            @Html.ActionLink(String.Format("[ {0} ]", UIConfigLogin.Gerenciar), "ManageLogins")
+        </dd>
+        <dt>@UIConfigLogin.NumeroDeTelefone:</dt>
+        <dd>
+            @UIConfigLogin.NumeroDeTelefone: @(Model.PhoneNumber ?? "Nenhum") [
+            @if (Model.PhoneNumber != null)
+            {
+                @Html.ActionLink(UIConfigLogin.Trocar, "AddPhoneNumber")
+                @: &nbsp;|&nbsp;
+                @Html.ActionLink(UIConfigLogin.Remover, "RemovePhoneNumber")
+            }
+            else
+            {
+                @Html.ActionLink(UIConfigLogin.Adicionar, "AddPhoneNumber")
+            }
+            ]
+        </dd>
+        <dt>@UIConfigLogin.AutenticacaoDeDoisFatores:</dt>
+        <dd>
+            @if (Model.TwoFactor)
+            {
+                using (Html.BeginForm("DisableTFA", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <span>
+                        @UIConfigLogin.AutenticacaoDeDoisFatoresEstaHabilitado:
+                        [ <input type="submit" value="@UIConfigLogin.Desabilitar" class="btn btn-link" /> ]
+                    </span>
+                }
+            }
+            else
+            {
+                using (Html.BeginForm("EnableTFA", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <span>
+                        @UIConfigLogin.AutenticacaoDeDoisFatoresEstaDesabilitado:
+                        [ <input type="submit" value="@UIConfigLogin.Habilitar" class="btn btn-link" /> ]
+                    </span>
+                }
+            }
+        </dd>
+        <dt>@UIConfigLogin.AutenticacaoDeDoisFatores:</dt>
+        <dd>
+            @if (Model.BrowserRemembered)
+            {
+                using (Html.BeginForm("ForgetBrowser", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <span>
+                        @UIConfigLogin.OBrowserSeraLembradoParaTwoFactor:
+                        [ <input type="submit" value="@UIConfigLogin.EsquecerBrowser" class="btn btn-link" /> ]
+                    </span>
+                }
+            }
+            else
+            {
+                using (Html.BeginForm("RememberBrowser", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <span>
+                        @UIConfigLogin.OBrowserNaoSeraLembradoParaTwoFactor:
+                        [ <input type="submit" value="@UIConfigLogin.LembrarBrowser" class="btn btn-link" /> ]
+                    </span>
+                }
+            }
+        </dd>
+        <dt>Culture:</dt>
+        <dd>
+            [ @Html.ActionLink("Configurações de Cultura", "ConfigureCultureInfo") ]
+        </dd>
+    </dl>
+    <hr />
+    <div class="row">
+        <div class="col">@Html.ActionLink("Inicio", "Index", "Inicio", null, new { @class = "text-reset" })</div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿/*--------------------------------------------------------------------------------------------------
+    STYLE GRID SYSTEM
+--------------------------------------------------------------------------------------------------*/
+.row * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }     
+.row { width: 100%; max-width: 100%; margin: 0 auto; }
+.row .row { width: auto; max-width: none; min-width: 0; margin: 0 -10px; }
+.row-button{ padding:20px 0; }
+     
+.column, .columns { float: left; min-height: 1px; padding: 0 10px; position: relative; }
+
+.col-pd-left  { padding-left :10px !important; }
+.col-pd-right { padding-right:10px !important; }
+.col-pd-left0 { padding-left :1px  !important; }
+.col-pd-right0{ padding-right:1px  !important; }
+
+.column:first-child, .columns:first-child { padding-left: 0; }
+.column:last-child,  .columns:last-child  { padding-right: 0; }
+
+[class*="column"] + [class*="column"]:last-child { float: right; }
+[class*="column"] + [class*="column"].end { float: left; }
+     
+.row .col1 { width: 8.33% }
+.row .col2 { width: 16.66% }
+.row .col3 { width: 25% }
+.row .col4 { width: 33.33% }
+.row .col5 { width: 41.66% }
+.row .col6 { width: 50% }
+.row .col7 { width: 58.33% }
+.row .col8 { width: 66.66% }
+.row .col9 { width: 75% }
+.row .col10 { width: 83.33% }
+.row .col11 { width: 91.66% }
+.row .col12 { width: 100% }
+     
+.row:before, .row:after, .clearfix:before, .clearfix:after { content:""; display:table; }
+.row:after, .clearfix:after { clear: both; }
+.row, .clearfix { zoom: 1; }
+
+@media only screen and (max-width: 767px) {
+	.row { width: auto; min-width: 0; margin-left: 0; margin-right: 0; }
+     
+    .column, .columns { width: auto !important; float: none;  }
+    .column:last-child, .columns:last-child { float: none; }
+    
+    .column:first-child, .columns:first-child { padding-left: 10px; }
+    .column:last-child,  .columns:last-child  { padding-right: 10px; }
+    
+    [class*="column"] + [class*="column"]:last-child { float: none; }
+     
+    .column:before, .columns:before, .column:after, .columns:after { content:""; display:table; }
+    .column:after, .columns:after { clear: both; }
+}

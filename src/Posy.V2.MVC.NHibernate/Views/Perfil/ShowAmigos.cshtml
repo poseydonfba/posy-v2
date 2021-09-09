@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_PrincipalPerfil.cshtml";
+    ViewBag.Title = "ShowAmigos";
+}
+
+<div class="ms-cnt-blc ms-cnt-amigos">
+    <div class="view-titulo">
+        <div class='ms-cnt-tit-blc'>
+            <h1 class='ms-tit-blc-txt icon-people'>@Posy.V2.Infra.CrossCutting.Common.Resources.UIConfig.Amigos</h1>
+            <div class='ms-tit-blc-line'></div>
+        </div>
+    </div>
+    <div class="view-pager vp1"></div>
+    <div class="view-page"></div>
+    <div class="view-pager vp2"></div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            fnView();
+
+            $(document).on("click", ".btnMenuItem", function () {
+
+                if ($(this).attr("opcao") == "AE")
+                    fnExcluirAmigo($(this));
+
+            });
+
+            function fnExcluirAmigo(objBtn) {
+
+                var objContainerLoading = $(".tooltip-dropmenu-container[codperfil=" + objBtn.attr("codperfil") + "]");
+
+                objContainerLoading.buttonLoader('start');
+
+                var model = new Object();
+                model.UsuarioIdParaExcluir = objBtn.attr("codperfil");
+
+                $.post("/ajax/amigo/excluir", { model: model }, function (data) {
+
+                    $("li[codperfil=" + objBtn.attr("codperfil") + "]").fadeOut(300, function () {
+                        $(this).remove();
+                    });
+
+                    var objTitleCnt = $(".ms-tit-blc-btn"),
+                        totalItens = (objTitleCnt.text() === undefined || objTitleCnt.text() == "") ? 0 : parseInt(objTitleCnt.text());
+
+                    totalItens = ((totalItens - 1) < 0) ? 0 : totalItens;
+                    objTitleCnt.text((totalItens - 1));
+
+                    $(fnGetIDContainerAmigos() + " .gl-cnt-zoom .gl-zoom[codperfil=" + objBtn.attr("codperfil") + "]").fadeOut(300, function () {
+                        $(this).remove();
+                    });
+
+                }).always(function () {
+                    objContainerLoading.buttonLoader('stop');
+                });
+            }
+
+            function fnView() {
+                var objLoader = $(".mv-loading").boxLoader();
+                $.get("/ajax/amigo/template/view", function (data) {
+                    fnShowViewPerfilData(data);
+                    fnInicializaViewPerfil();
+                }).always(function () {
+                    objLoader.stop();
+                });
+            }
+        });
+
+    </script>
+}

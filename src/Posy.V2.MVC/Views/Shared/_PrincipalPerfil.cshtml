@@ -1,0 +1,75 @@
+﻿@using Posy.V2.Domain.Entities
+@using Posy.V2.MVC.Controllers
+@{Perfil PerfilLogged = BaseControllerPerfil.PerfilLogged; }
+@{Perfil PerfilView = BaseControllerPerfil.PerfilView; }
+@{
+    Layout = "~/Views/Shared/_Principal.cshtml";
+}
+
+<div class="ms-cnt-glb">
+
+    <section class="columns">
+
+        <div class="ms-cnt-col01 sidebar">
+            <div class="ms-cnt-blc-vazio ms-cnt-blc-perfil">
+                <div class="pf-cnt-foto">
+                    <div class="pf-foto-effect">
+                        @if (Request.IsAuthenticated)
+                        {
+                            <img id="fotoPerfil" src="/Images/perfil/@PerfilView.UsuarioId/1.jpg?@DateTime.Now.ToOADate()" alt="img0" />
+                        }
+                        else
+                        {
+                            <img id="fotoPerfil" src="~/Images/perfil/0.jpg" alt="img0" />
+                        }
+                        <div>
+                            <h2>
+                                <span id="lblNome" class="lblNome">@PerfilView.Nome</span><span>&nbsp;&nbsp;<span id="lblSobrenome" class="lblSobrenome">@PerfilView.Sobrenome</span></span>
+                            </h2>
+                            <p>
+                                <span id="lblFrase" class="lblFrase">@PerfilView.FraseHtml</span>
+                            </p>
+                            <!--a href="#">View more</a-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mn-cnt-vert">@Html.Raw(@ViewBag.GetTemplateMenuVerticalPerfilHtml)</div>
+        </div>
+
+        <div class="ms-cnt-col02">
+            @RenderBody()
+        </div>
+
+        <div class="ms-cnt-col03 sidebar">
+
+            <div class="ms-cnt-blc-vazio ms-cnt-blc-vis-recente">
+                <div id="stories"></div>
+            </div>
+
+            <div class="ms-cnt-blc-vazio ms-cnt-blc-vis-recente">
+                <div id="containerVisitante" class="resizeBloco2">@Html.Raw(@ViewBag.GetTemplateVisitantesHtml)</div>
+            </div>
+
+            <div class="ms-cnt-blc-vazio ms-cnt-blc-amigos">
+                <div id="containerAmigos" class="resizeBloco1">@Html.Raw(@ViewBag.GetTemplateAmigosHtml)</div>
+            </div>
+
+            <div class="ms-cnt-blc-vazio ms-cnt-blc-cmm">
+                <div id="containerCmm" class="resizeBloco1">@Html.Raw(@ViewBag.GetTemplateCmmHtml)</div>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="ms-cnt-rdp footer">
+        <h1>
+            POSEYDON ESPILACOPA<br /><p>REDE SOCIAL</p>
+        </h1>
+    </div>
+
+</div>
+
+@section Scripts {
+    @RenderSection("scripts", required: false)
+}

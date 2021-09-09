@@ -1,0 +1,426 @@
+﻿@using Posy.V2.Infra.CrossCutting.Common.Resources
+@{
+    Layout = "~/Views/Shared/_PrincipalPerfil.cshtml";
+    ViewBag.Title = "EditPerfil";
+}
+
+<div class="ms-cnt-blc ms-cnt-cadperfil">
+
+    <div class="ms-cnt-tit-blc">
+        <h1 class="ms-tit-blc-txt icon-edit">@UIConfig.DadosDoPerfil</h1>
+        <div class="ms-tit-blc-line"></div>
+    </div>
+
+    <!-- TABS INI ----------------------------------------------------------------------------------------------------------------------------->
+
+    <div class="tabs pnlEditPerfil" style="display: none;">
+        <table class="tabs-table-label">
+            <tr>
+                <td>
+                    <label class="tabs-tab-label tabs-tab-label-selected" idcontent="content-1">@UIConfig.DadosPessoais</label>
+                </td>
+                <td>
+                    <label class="tabs-tab-label" idcontent="content-2">@UIConfig.FotoDoPerfil</label>
+                </td>
+                <td>
+                    <label class="tabs-tab-label" idcontent="content-3">@UIConfig.Privacidade</label>
+                </td>
+            </tr>
+        </table>
+
+        <div class="clear-shadow"></div>
+
+        <div class="tabs-content" style="min-height: 300px;">
+            <div class="tabs-tab-content content-1" style="display: block;">
+
+                <!-- FORM INI ----------------------------------------------------------------------------------------------------------------------------->
+
+                <div id="containerPerfilCad" class="fm-cnt-default">
+
+                    <div class="box-form">
+                        <fieldset>
+
+                            <div class="half-width">
+                                <label for="txtNome">@UIConfig.Nome</label>
+                                <input type="text" id="txtNome" name="txtNome" maxlength="15" class="obrigatorio" />
+                            </div>
+
+                            <div class="half-width">
+                                <label for="txtSobrenome">@UIConfig.Sobrenome</label>
+                                <input type="text" id="txtSobrenome" name="txtSobrenome" maxlength="15" class="obrigatorio" />
+                            </div>
+
+                            <div class="half-width">
+                                <div>
+                                    <p class="half-width" style="width: 100%;">
+                                        <label>@UIConfig.Pais</label>
+                                        <b>
+                                            <span class="cd-select" style="width: 100%;">
+                                                <select name="dropPais" id="dropPais" style="width: 100%;">
+                                                    <option value="pt-BR">Brasil</option>
+                                                    <option value="en-US">English</option>
+                                                </select>
+                                            </span>
+                                        </b>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="half-width">
+                                <div>
+                                    <p class="half-width" style="width: 100%;">
+                                        <label>@UIConfig.DataDeNascimento</label>
+                                        <b style="display: block;">
+                                            <span class="cd-select">
+                                                <select name="dropDNDia" id="dropDNDia"></select>
+                                            </span>
+
+                                            <span class="cd-select">
+                                                <select name="dropDNMes" id="dropDNMes"></select>
+                                            </span>
+
+                                            <span class="cd-select">
+                                                <select name="dropDNAno" id="dropDNAno"></select>
+                                            </span>
+                                        </b>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="half-width">
+                                <div>
+                                    <p class="half-width" style="width: 100%;">
+                                        <label>@UIConfig.Sexo</label>
+                                        <b>
+                                            <span class="cd-select" style="width: 100%;">
+                                                <select name="dropSexo" id="dropSexo" style="width: 100%;">
+                                                    <option value="1">Masculino</option>
+                                                    <option value="2">Feminino</option>
+                                                </select>
+                                            </span>
+                                        </b>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="half-width">
+                                <div>
+                                    <p class="half-width" style="width: 100%;">
+                                        <label>@UIConfig.EstadoCivil</label>
+                                        <b>
+                                            <span class="cd-select" style="width: 100%;">
+                                                <select name="dropEstadoCivil" id="dropEstadoCivil" style="width: 100%;">
+                                                    <option value="1">Solteiro</option>
+                                                    <option value="2">Casado</option>
+                                                    <option value="3">Divorciado</option>
+                                                    <option value="4">Viúvo</option>
+                                                    <option value="5">Separado</option>
+                                                </select>
+                                            </span>
+                                        </b>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="half-width">
+                                <label for="txtNomeId">@UIConfig.NomeParaUrlAmigavel</label>
+                                <input type="text" id="txtNomeId" name="txtNomeId" maxlength="20" />
+                            </div>
+
+                            <div class="half-width" style="width: 100%;">
+                                <label for="txtFrase">@UIConfig.FraseDoPerfil</label>
+                                <input type="text" id="txtFrase" name="txtFrase" maxlength="200" />
+                            </div>
+
+                            <div class="half-width" style="width: 100%; position:relative;">
+                                <label for="userEmail">@UIConfig.Perfil</label>
+
+                                <div class="ed-cnt-cmt" style="margin-top: 5px;">
+                                </div>
+                                <!-- end of comments container "ed-cnt-cmt" -->
+
+                            </div>
+
+                        </fieldset>
+
+                        <div class="ed-cnt-cmt-btn">
+                            <a href="javascript:void(0);" class="button big icon approve primary btnSalvarDadosPessoais">@UIConfig.SalvarDadosPessoais</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- FORM FIM ----------------------------------------------------------------------------------------------------------------------------->
+
+            </div>
+            <div class="tabs-tab-content content-2">
+
+                <!-- FORM INI ----------------------------------------------------------------------------------------------------------------------------->
+
+                <fieldset>
+                    <div class="ed-cnt-cmt-btn">
+                        <a href="javascript:void(0);" class="button big icon approve primary btnUpload">
+                            @UIConfig.AlterarFotoDoPerfil
+                        </a>
+                    </div>
+                </fieldset>
+                <div class="fileContainer">
+                    <input type="file" id="fileUploadFotoPerfil" name="file">
+                </div>
+
+                <!-- FORM FIM ----------------------------------------------------------------------------------------------------------------------------->
+                <!-- CONTAINER CROP IMAGEM INI ----------------------------------------------------------------------------------------------------------------------------->
+
+                <div id="containerCropImgPerfil"></div>
+
+                <!-- CONTAINER CROP IMAGEM FIM ----------------------------------------------------------------------------------------------------------------------------->
+
+            </div>
+            <div class="tabs-tab-content content-3">
+
+                <div id="containerPerfilPrivacidade" class="fm-cnt-default">
+                    <div class="box-form" action="">
+                        <fieldset>
+
+                            <div class="half-width">
+                                <div>
+                                    <p class="half-width" style="width: 100%;">
+                                        <label>@UIConfig.QuemPodeVerMeusRecados</label>
+                                        <b>
+                                            <span class="cd-select" style="width: 100%;">
+                                                <select name="dropVerRecados" id="dropVerRecados" style="width: 100%;">
+                                                    <option value="1">@UIConfig.ApenasMeusAmigos</option>
+                                                    <option value="0">@UIConfig.Todos</option>
+                                                </select>
+                                            </span>
+                                        </b>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="half-width">
+                                <div>
+                                    <p class="half-width" style="width: 100%;">
+                                        <label>@UIConfig.QuemPodeEscreverRecadosParaMim</label>
+                                        <b>
+                                            <span class="cd-select" style="width: 100%;">
+                                                <select name="dropEscreverRecados" id="dropEscreverRecados" style="width: 100%;">
+                                                    <option value="1">@UIConfig.ApenasMeusAmigos</option>
+                                                    <option value="0">@UIConfig.Todos</option>
+                                                </select>
+                                            </span>
+                                        </b>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="ed-cnt-cmt-btn">
+                                <a href="javascript:void(0);" class="button big icon approve primary btnSalvarDadosPrivacidade">@UIConfig.SalvarDadosDePrivacidade</a>
+                            </div>
+                        </fieldset>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TABS FIM ----------------------------------------------------------------------------------------------------------------------------->
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/perfil/edit")
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            fnCarregarDropAno($("#dropDNAno"));
+            fnCarregarDropMes($("#dropDNMes"));
+            fnCarregarDropDia($("#dropDNDia"));
+
+            var editorPerfil = $(".ed-cnt-cmt").editorHtml({ buttonsBottom: false });
+
+            fnView();
+
+            function fnView() {
+
+                var objLoader = $(".mv-loading").boxLoader();
+
+                $.when(
+
+                    $.get("/ajax/perfil"),
+                    $.get("/ajax/privacidade")
+
+                ).then(function (perfil, privacidade) {
+                    perfil = perfil[0];
+                    privacidade = privacidade[0];
+
+                    var dataNascimento = fnDataJsonToDate(perfil.DataNascimento);
+
+                    $("#txtNome").val(perfil.Nome);
+                    $("#txtNomeId").val(perfil.Alias);
+                    $("#txtSobrenome").val(perfil.Sobrenome);
+                    $("#dropPais").val(perfil.PaisId);
+                    $("#dropDNDia").val(dataNascimento.getDate());
+                    $("#dropDNMes").val(dataNascimento.getMonth() + 1);
+                    $("#dropDNAno").val(dataNascimento.getFullYear());
+                    $("#dropSexo").val(perfil.Sexo);
+                    $("#dropEstadoCivil").val(perfil.EstadoCivil);
+                    $("#txtFrase").val(perfil.FraseHtml);
+
+                    $("#dropVerRecados").val(privacidade.VerRecado);
+                    $("#dropEscreverRecados").val(privacidade.EscreverRecado);
+
+                    editorPerfil.find('.new-com-bt').click();
+                    editorPerfil.find('.the-new-com').contents().find("body").html(perfil.PerfilHtml);
+
+                    //var $iframe = editorPerfil.find("iframe.the-new-com");
+                    //$iframe.css('height', ($iframe.contents().find('body').height()) + 'px'); // 4106px
+                    //$iframe.css('height', '4106px');
+
+                    $(".pnlEditPerfil").show();
+
+                    $("#txtNome").focus();
+
+                    fnInicializaViewPerfil();
+
+                }).always(function () {
+                    objLoader.stop();
+                });
+            }
+
+            $(".btnSalvarDadosPessoais").click(function () {
+                if (fnVerificaCampos("#containerPerfilCad") != "n") {
+                    fnNotificacao("warning", "Preencha os campos corretamente.", V_TIME_MESSAGE);
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                    return false;
+                }
+
+                fnSalvar($(this));
+            });
+
+            $(".btnSalvarDadosPrivacidade").click(function () {
+                fnSalvarPrivacidade($(this));
+            });
+
+            function fnSalvar(objBtn) {
+
+                var objContainerLoading = objBtn;
+                objContainerLoading.buttonLoader('start');
+
+                var model = new Object();
+                model.Nome = $("#txtNome").val();
+                model.Sobrenome = $("#txtSobrenome").val();
+                model.Alias = $("#txtNomeId").val();
+                model.PaisId = $("#dropPais").val();
+                model.DataNascimento = $("#dropDNAno").val() + "-" + $("#dropDNMes").val() + "-" + $("#dropDNDia").val();
+                model.Sexo = $("#dropSexo").val();
+                model.EstadoCivil = $("#dropEstadoCivil").val();
+                model.FrasePerfil = $("#txtFrase").val();
+
+                var _objEditor = editorPerfil.find('.the-new-com'),
+                    _nodeName = _objEditor.get(0).nodeName;
+
+                if (_nodeName == "IFRAME")
+                    model.DescricaoPerfil = _objEditor.contents().find("body").html();
+                else
+                    model.DescricaoPerfil = _objEditor.val();
+
+                $.post("/ajax/perfil/edit", { model: model }, function (response) {
+
+                    $(".lblNome").html($("#txtNome").val());
+                    $(".lblSobrenome").html($("#txtSobrenome").val());
+                    $(".lblFrase").html($("#txtFrase").val());
+                    fnNotificacao("success", "Perfil salvo com sucesso.", V_TIME_MESSAGE);
+                    $("#txtNome").focus();
+                    $(".has-error").removeClass("has-error");
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+
+                }).always(function () {
+                    objContainerLoading.buttonLoader('stop');
+                });
+            }
+
+            function fnSalvarPrivacidade(objBtn) {
+
+                var objContainerLoading = objBtn;
+                objContainerLoading.buttonLoader('start');
+
+                var model = new Object();
+                model.VerRecado = $("#dropVerRecados").val();
+                model.EscreverRecado = $("#dropEscreverRecados").val();
+
+                $.post("/ajax/privacidade/edit", { model: model }, function (response) {
+
+                    fnNotificacao("success", "Perfil salvo com sucesso.", V_TIME_MESSAGE);
+
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+
+                }).fail(function (err) {
+                    fnErrorGlobal(err);
+
+                }).always(function () {
+                    objContainerLoading.buttonLoader('stop');
+                });
+            }
+
+            $(".btnUpload").click(function () {
+                $('#fileUploadFotoPerfil').click();
+            });
+
+            $('#fileUploadFotoPerfil').change(function () {
+                var objLoader;
+
+                $(this).simpleUpload("/ajax/perfil/upload/foto", {
+
+                    allowedExts: ["jpg", "jpeg", /*"jpe", "jif", "jfif", "jfi",*/ "png", "gif"],
+                    allowedTypes: [/*"image/pjpeg",*/ "image/jpeg", "image/png", "image/x-png", "image/gif", "image/x-gif"],
+                    maxFileSize: 5000000, //5MB in bytes
+
+                    beforeSend: function (jqXHR, settings) {
+                        // https://code.i-harness.com/en/q/3e2ad7
+                        settings.data.append("__RequestVerificationToken", gettoken());
+                    },
+
+                    start: function (file) {
+                        objLoader = $(".mv-loading").boxLoader();
+                    },
+
+                    progress: function (progress) {
+                        //received progress
+                    },
+
+                    success: function (data) {
+                        objLoader.stop();
+
+                        var v_html =
+                            '<div class="component" style="border:solid 1px red;">' +
+                            '<div class="overlay">' +
+                            '<div class="overlay-inner">' +
+                            '</div>' +
+                            '</div>' +
+                            '<img class="resize-image" src="' + data + '" imagesrc="' + data + '" alt="image for resizing">' +
+                            '<a href="javascript:void(0);" class="button big approve icon btn-crop js-crop">Trocar imagem</a>' +
+                            '</div>';
+
+                        $("#containerCropImgPerfil").html(v_html);
+
+                        resizeableImage($('#containerCropImgPerfil .resize-image'), "editperfil");
+                    },
+
+                    error: function (error) {
+                        objLoader.stop();
+                        fnError(error.message);
+                    }
+                });
+            });
+
+        });
+    </script>
+}
+

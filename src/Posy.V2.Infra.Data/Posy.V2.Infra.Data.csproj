@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{76579ED4-7841-4B1B-927F-13E6FDD382E9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Posy.V2.Infra.Data</RootNamespace>
+    <AssemblyName>Posy.V2.Infra.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\DatabaseContext.cs" />
+    <Compile Include="ElmahConfig.cs" />
+    <Compile Include="EntityConfig\AmizadeConfig.cs" />
+    <Compile Include="EntityConfig\CategoriaConfig.cs" />
+    <Compile Include="EntityConfig\ComunidadeConfig.cs" />
+    <Compile Include="EntityConfig\ConnectionConfig.cs" />
+    <Compile Include="EntityConfig\DepoimentoConfig.cs" />
+    <Compile Include="EntityConfig\MembroConfig.cs" />
+    <Compile Include="EntityConfig\ModeradorConfig.cs" />
+    <Compile Include="EntityConfig\PerfilConfig.cs" />
+    <Compile Include="EntityConfig\PostOcultoConfig.cs" />
+    <Compile Include="EntityConfig\PostPerfilBloqueadoConfig.cs" />
+    <Compile Include="EntityConfig\PostPerfilComentarioConfig.cs" />
+    <Compile Include="EntityConfig\PostPerfilConfig.cs" />
+    <Compile Include="EntityConfig\PrivacidadeConfig.cs" />
+    <Compile Include="EntityConfig\RecadoComentarioConfig.cs" />
+    <Compile Include="EntityConfig\RecadoConfig.cs" />
+    <Compile Include="EntityConfig\StorieConfig.cs" />
+    <Compile Include="EntityConfig\TopicoConfig.cs" />
+    <Compile Include="EntityConfig\TopicoPostConfig.cs" />
+    <Compile Include="EntityConfig\UsuarioConfig.cs" />
+    <Compile Include="EntityConfig\VideoComentarioConfig.cs" />
+    <Compile Include="EntityConfig\VideoConfig.cs" />
+    <Compile Include="EntityConfig\VisitantePerfilConfig.cs" />
+    <Compile Include="Migrations\202107170137048_InitialCreate.cs" />
+    <Compile Include="Migrations\202107170137048_InitialCreate.Designer.cs">
+      <DependentUpon>202107170137048_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AmizadeRepository.cs" />
+    <Compile Include="Repository\ComunidadeRepository.cs" />
+    <Compile Include="Repository\ConnectionRepository.cs" />
+    <Compile Include="Repository\DepoimentoRepository.cs" />
+    <Compile Include="Repository\MembroRepository.cs" />
+    <Compile Include="Repository\ModeradorRepository.cs" />
+    <Compile Include="Repository\PerfilRepository.cs" />
+    <Compile Include="Repository\PostOcultoRepository.cs" />
+    <Compile Include="Repository\PostPerfilBloqueadoRepository.cs" />
+    <Compile Include="Repository\PostPerfilComentarioRepository.cs" />
+    <Compile Include="Repository\PostPerfilRepository.cs" />
+    <Compile Include="Repository\PrivacidadeRepository.cs" />
+    <Compile Include="Repository\RecadoComentarioRepository.cs" />
+    <Compile Include="Repository\RecadoRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\StorieRepository.cs" />
+    <Compile Include="Repository\TopicoPostRepository.cs" />
+    <Compile Include="Repository\TopicoRepository.cs" />
+    <Compile Include="Repository\UsuarioRepository.cs" />
+    <Compile Include="Repository\VideoComentarioRepository.cs" />
+    <Compile Include="Repository\VideoRepository.cs" />
+    <Compile Include="Repository\VisitantePerfilRepository.cs" />
+    <Compile Include="Seeds\UsuarioSeed.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Posy.V2.Domain\Posy.V2.Domain.csproj">
+      <Project>{2afd4c62-a4c1-46d9-bf7b-d372d11cf3ec}</Project>
+      <Name>Posy.V2.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Posy.V2.Infra.CrossCutting.Common\Posy.V2.Infra.CrossCutting.Common.csproj">
+      <Project>{020b662b-e18b-4350-a44f-62e7a8c2578e}</Project>
+      <Name>Posy.V2.Infra.CrossCutting.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202107170137048_InitialCreate.resx">
+      <DependentUpon>202107170137048_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

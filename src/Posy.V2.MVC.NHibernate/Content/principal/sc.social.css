@@ -1,0 +1,68 @@
+﻿.sc-cnt
+{
+    font-size: 10px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    font-family: "Helvetica Neue" , Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+
+    text-align: center;
+}
+.sc-cnt hr
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+.sc-cnt a
+{
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+    /*color: #337ab7;*/
+    color: #f5f5f5;
+    text-decoration: none;
+}
+.sc-cnt a[id=btnFacebook]:hover
+{
+    color: #fff;
+    background-color: #3B5998;
+}
+.sc-cnt a[id=btnGoogle]:hover
+{
+    color: #fff;
+    background-color: #DD4B39;
+}
+.sc-cnt a[id=btnLinkedin]:hover
+{
+    color: #fff;
+    background-color: #007BB6;
+}
+.sc-cnt .btn-block
+{
+    display: block;
+    width: 100%;
+}
+.sc-cnt .btn-block + .sc-cnt .btn-block
+{
+    margin-top: 5px;
+}

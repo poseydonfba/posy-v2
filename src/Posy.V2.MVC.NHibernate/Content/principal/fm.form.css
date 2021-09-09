@@ -1,0 +1,248 @@
+﻿.has-error input[type=text],
+.has-error input[type=password],
+.has-error select {    
+    box-shadow: 0 0 5px rgba(215, 102, 102, .7);
+    border: 1px solid #d76666 !important;
+}
+/* Login */
+.fm-login
+{
+    position:relative;
+    width:700px;
+    margin-right: 0;
+    /*-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);*/
+}
+    .fm-login .fm-cnt-default {
+        background: #f7f7f7;
+    }
+.fm-login input[type=text],
+.fm-login input[type=password],
+.fm-login select 
+{
+    background:#fff !important;
+}
+.fm-login legend 
+{
+    color:#fff !important;
+}
+.fm-login label 
+{
+    color:rgba(255,255,255,.8) !important;
+}
+.fm-login input[type=checkbox]
+{
+    background: #fff !important;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    float:left;
+}
+
+/* Form */
+.fm-cnt-default
+{
+    background:#fff;
+    font-size: 1.6rem;
+    font-family: "Open Sans" , sans-serif;
+    color: #0f222b;
+    width:100%;
+    padding:50px;  
+    position:relative;
+    /*height: 100vh;*/
+}
+
+.fm-cnt-default input
+{
+    font-family: "Open Sans" , sans-serif;
+    font-size: 1.6rem;
+}
+
+.fm-cnt-default::before
+{
+    display: none;
+    content: 'mobile';
+}
+.fm-cnt-default .cd-plan-info
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    text-align: center;
+}
+.fm-cnt-default .box-form
+{
+    /*height: 100%;*/
+    overflow: hidden;    
+}
+.fm-cnt-default fieldset
+{
+    margin: 0; 
+}
+.fm-cnt-default fieldset > div
+{
+    padding-top: .6em !important;
+}
+.fm-cnt-default fieldset div::after
+{
+    clear: both;
+    content: "";
+    display: table;
+}
+.fm-cnt-default fieldset:last-of-type > div
+{
+    padding-top: 0;
+}
+.fm-cnt-default legend
+{
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.2;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom:10px;
+}
+.fm-cnt-default input[type="radio"], .fm-cnt-default label
+{
+    cursor: pointer;
+}
+.fm-cnt-default label
+{
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #b2b2b2;   
+}
+.fm-cnt-default input[type="radio"] + label
+{
+    color: #0f222b;
+}
+.fm-cnt-default input[type="text"], .fm-cnt-default input[type="email"], .fm-cnt-default input[type="password"], .fm-cnt-default select
+{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    height: 30px;
+    border: 2px solid #e5e5e5;
+    border-radius: 0;
+    background: transparent;
+}
+.fm-cnt-default input[type="text"]:focus, .fm-cnt-default input[type="email"]:focus, .fm-cnt-default input[type="password"]:focus, .fm-cnt-default select:focus
+{
+    outline: none;
+    border-color: #336699;
+}
+.fm-cnt-default input[type="text"], .fm-cnt-default input[type="email"], .fm-cnt-default input[type="password"]
+{
+    width: 100%;
+    display: block;
+    margin-top: 6px;
+    padding: 0 4px;
+    font-size: 12px;
+}
+.fm-cnt-default select
+{
+    padding: 0 4px;
+    font-size: 12px;
+}
+.fm-cnt-default select::-ms-expand
+{
+    /* remove default arrows in IE */
+    display: none;
+}
+.fm-cnt-default .cd-select
+{
+    display: inline-block;
+    position: relative;
+    margin-top: 6px;
+}
+.fm-cnt-default .cd-select::after
+{
+    /* arrow icons */
+    content: '';
+    position: absolute;
+    top: 50%;
+    bottom: auto;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 10px;
+    height: 6px;
+    width: 10px;
+    background: url(../img/cd-icon-arrow.svg) no-repeat center center;
+    pointer-events: none;
+}
+.fm-cnt-default::before
+{
+    /* never visible - this is used in jQuery to check the current MQ */
+    content: 'desktop';
+}
+.fm-cnt-default .half-width
+{
+    width: 48%;
+    float: left;
+    margin-right: 4%;
+}
+.fm-cnt-default .half-width:nth-of-type(2n)
+{
+    margin-right: 0;
+}
+.fm-cnt-default input[type="submit"]
+{
+    float: right;
+}
+
+/* Tabs */
+.tabs {
+	margin: 0px auto;
+	padding: 14px;
+	
+}
+.tabs-tab-label {
+	background:rgba(242,250,254,.8);
+	border-bottom:1px solid #d5d9da;
+	border-left:solid 1px #d5d9da;
+	border-right:solid 1px #d5d9da;	
+	line-height: 40px;
+	height: 40px;
+	position: relative;
+	padding: 0 20px;
+    float: left;
+	display: block;
+	text-align: center;
+
+	font-size: 12px/18px !important;
+	font-family:Georgia, "Helvetica Neue", Helvetica, Arial, sans-serif !important;	
+	font-style:italic !important;
+	font-weight:normal !important;
+	color: #777 !important;
+}
+.tabs-tab-label-selected{
+    background: #fff !important;
+    border-bottom:1px solid #fff !important;
+}
+.tabs-content {
+    background: #fff;
+    width: 100%;
+    margin-top:-1px;
+    border-top:1px solid #d5d9da;
+    padding:10px;
+}
+.tabs-table-label{margin:0px auto;border-collapse:collapse;border:none !important;}
+.tabs-table-label td{border-collapse:collapse;border:none !important;}
+.tabs-tab-content{display:none;}
+.clear-shadow {clear: both;}
+
+.fileContainer {
+}
+
+    .fileContainer [type=file] {
+        display:none;
+    }

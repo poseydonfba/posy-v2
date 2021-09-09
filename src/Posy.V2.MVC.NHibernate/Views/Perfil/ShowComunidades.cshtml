@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_PrincipalPerfil.cshtml";
+    ViewBag.Title = "ShowComunidades";
+}
+<div class="ms-cnt-blc ms-cnt-comunidades">
+    <div class="ms-cnt-tit-blc">
+        <h1 class="ms-tit-blc-txt icon-cmm">@Posy.V2.Infra.CrossCutting.Common.Resources.UIConfig.Comunidades</h1>
+        <div class="ms-tit-blc-line"></div>
+    </div>
+    <div class="view-pager vp1"></div>
+    <div class="view-page"></div>
+    <div class="view-pager vp2"></div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            fnView();
+
+            function fnView() {
+                var objLoader = $(".mv-loading").boxLoader();
+
+                $.get("/ajax/comunidade/template/view", function (view) {
+
+                    fnShowViewPerfilData(view);
+                    fnInicializaViewPerfil();
+
+                }).always(function () {
+                    objLoader.stop();
+                });
+            }
+
+        });
+
+    </script>
+}

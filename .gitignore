@@ -1,0 +1,10 @@
+.vs/
+BuildProcessTemplates/
+bin/
+obj/
+Properties/PublishProfiles/
+packages/
+/config/
+Secrets.txt
+
+/src/Posy.V2.DOS/

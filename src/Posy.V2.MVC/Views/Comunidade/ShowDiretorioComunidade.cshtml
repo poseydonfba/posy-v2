@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_PrincipalComunidade.cshtml";
+    ViewBag.Title = "ShowDiretorioComunidade";
+}
+
+<div class="ms-cnt-blc ms-cnt-pesqcmm">
+
+    <div class="ms-cnt-tit-blc">
+        <h1 class="ms-tit-blc-txt icon-cmm">@Posy.V2.Infra.CrossCutting.Common.Resources.UIConfig.Comunidades</h1>
+        <div class="ms-tit-blc-line"></div>
+    </div>
+
+    <!---- BOTOES INI---------------------------------------------------------------------------------------------------------------------->
+
+    <div class="ed-cnt-cmt-btn">
+        <a href="~/@Posy.V2.MVC.Helpers.FuncaoSite.ROUTE_URL_CADCMM" class="button big icon remove btnCriarCmm">@Posy.V2.Infra.CrossCutting.Common.Resources.UIConfig.CriarComunidade</a>
+    </div>
+
+    <!---- BOTOES INI---------------------------------------------------------------------------------------------------------------------->
+
+    <div id="containerPesqCmmView"></div>
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#liPesqCmm").addClass("mn-horiz-active");
+
+            fnView();
+
+            function fnView() {
+
+                var objLoader = $(".mv-loading").boxLoader();
+
+                $.get("/ajax/comunidade/diretorio/template/view", function (view) {
+
+                    $("#containerPesqCmmView").html(view[0]).hide().fadeIn("slow");
+
+                }).always(function () {
+                    objLoader.stop();
+                });
+            }
+
+        });
+
+    </script>
+}

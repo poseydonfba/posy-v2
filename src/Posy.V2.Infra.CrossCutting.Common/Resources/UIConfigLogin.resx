@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Ano" xml:space="preserve">
+    <value>Ano</value>
+  </data>
+  <data name="AsSenhasNaoSeCoincidem" xml:space="preserve">
+    <value>As senhas não se coincidem</value>
+  </data>
+  <data name="AssocieSuaSocialConta" xml:space="preserve">
+    <value>Associe sua conta {0}</value>
+  </data>
+  <data name="Conectar" xml:space="preserve">
+    <value>Conectar</value>
+  </data>
+  <data name="ConectarCom" xml:space="preserve">
+    <value>Conectar com</value>
+  </data>
+  <data name="ConfirmarSenha" xml:space="preserve">
+    <value>Confirmar Senha</value>
+  </data>
+  <data name="ContaSocialSucessoInfo" xml:space="preserve">
+    <value>Você autenticou com sucesso com &lt;strong&gt;{0}&lt;/strong&gt;. Por favor, insira um nome de usuário para este site abaixo e clique no botão registrar para concluir o login.</value>
+  </data>
+  <data name="DataDeNascimento" xml:space="preserve">
+    <value>Data de Nascimento</value>
+  </data>
+  <data name="EfetuarLogin" xml:space="preserve">
+    <value>Efetuar Login</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EsqueceuSuaSenha" xml:space="preserve">
+    <value>Esqueceu sua senha?</value>
+  </data>
+  <data name="EstadoCivil" xml:space="preserve">
+    <value>Estado Civil</value>
+  </data>
+  <data name="FormularioDeAssociacao" xml:space="preserve">
+    <value>Formulário de Associação</value>
+  </data>
+  <data name="InformeoTextoDaImagem" xml:space="preserve">
+    <value>Informe o texto da imagem</value>
+  </data>
+  <data name="LembrarLogin" xml:space="preserve">
+    <value>Lembrar login?</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LogInUsingYourProviderAccount" xml:space="preserve">
+    <value>Faça o login usando sua conta {0}</value>
+  </data>
+  <data name="Mes" xml:space="preserve">
+    <value>Mês</value>
+  </data>
+  <data name="Nome" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Registrar" xml:space="preserve">
+    <value>Registrar</value>
+  </data>
+  <data name="RegistrarUmaNovaConta" xml:space="preserve">
+    <value>Registrar uma nova conta?</value>
+  </data>
+  <data name="Senha" xml:space="preserve">
+    <value>Senha</value>
+  </data>
+  <data name="Sexo" xml:space="preserve">
+    <value>Sexo</value>
+  </data>
+  <data name="Sobrenome" xml:space="preserve">
+    <value>Sobrenome</value>
+  </data>
+  <data name="TamanhoDeSenha" xml:space="preserve">
+    <value>A {0} deve ter pelo menos {2} caracteres</value>
+  </data>
+  <data name="Adicionar" xml:space="preserve">
+    <value>Adicionar</value>
+  </data>
+  <data name="AlterarAsSuasConfiguracoesDeConta" xml:space="preserve">
+    <value>Alterar as configurações da sua conta</value>
+  </data>
+  <data name="AutenticacaoDeDoisFatores" xml:space="preserve">
+    <value>Autenticação de dois fatores</value>
+  </data>
+  <data name="AutenticacaoDeDoisFatoresEstaDesabilitado" xml:space="preserve">
+    <value>Autenticação de dois fatores está desabilitado</value>
+  </data>
+  <data name="AutenticacaoDeDoisFatoresEstaHabilitado" xml:space="preserve">
+    <value>Autenticação de dois fatores está habilitado</value>
+  </data>
+  <data name="DefinirSenhaParaContaLocal" xml:space="preserve">
+    <value>Definir senha para conta local</value>
+  </data>
+  <data name="Desabilitar" xml:space="preserve">
+    <value>Desabilitar</value>
+  </data>
+  <data name="EsquecerBrowser" xml:space="preserve">
+    <value>Esquecer Browser</value>
+  </data>
+  <data name="Gerenciar" xml:space="preserve">
+    <value>Gerenciar</value>
+  </data>
+  <data name="Habilitar" xml:space="preserve">
+    <value>Habilitar</value>
+  </data>
+  <data name="LembrarBrowser" xml:space="preserve">
+    <value>Lembrar Browser</value>
+  </data>
+  <data name="LoginsExternos" xml:space="preserve">
+    <value>Logins Externos</value>
+  </data>
+  <data name="LoginsSociais" xml:space="preserve">
+    <value>Logins Sociais</value>
+  </data>
+  <data name="NumeroDeTelefone" xml:space="preserve">
+    <value>Número de telefone</value>
+  </data>
+  <data name="OBrowserNaoSeraLembradoParaTwoFactor" xml:space="preserve">
+    <value>O browser NÃO será lembrado para Two Factor</value>
+  </data>
+  <data name="OBrowserSeraLembradoParaTwoFactor" xml:space="preserve">
+    <value>O browser será lembrado para Two Factor</value>
+  </data>
+  <data name="Remover" xml:space="preserve">
+    <value>Remover</value>
+  </data>
+  <data name="Trocar" xml:space="preserve">
+    <value>Trocar</value>
+  </data>
+  <data name="TrocarDeSenha" xml:space="preserve">
+    <value>Trocar de Senha</value>
+  </data>
+  <data name="EmailMessage" xml:space="preserve">
+    <value>Por favor confirme sua conta clicando neste link: &lt;a href="{0}"&gt;&lt;/a&gt;</value>
+  </data>
+  <data name="EmailSubject" xml:space="preserve">
+    <value>Confirme sua Conta</value>
+  </data>
+  <data name="EmailSubjectResend" xml:space="preserve">
+    <value>Confirme sua conta - Reenviado</value>
+  </data>
+  <data name="LoginOuSenhaIncorretos" xml:space="preserve">
+    <value>Login ou Senha incorretos</value>
+  </data>
+  <data name="ClienteConectados" xml:space="preserve">
+    <value>Cliente(s) Conectado(s)</value>
+  </data>
+  <data name="SairDeTodosOsLugares" xml:space="preserve">
+    <value>Sair de Todos os Lugares</value>
+  </data>
+  <data name="ASegundaValidacaoFoiEnviada" xml:space="preserve">
+    <value>A segunda validação foi enviada</value>
+  </data>
+  <data name="ASenhaFoiAlterada" xml:space="preserve">
+    <value>A senha foi alterada</value>
+  </data>
+  <data name="ASenhaFoiEnviada" xml:space="preserve">
+    <value>A senha foi enviada</value>
+  </data>
+  <data name="OcorreuUmErro" xml:space="preserve">
+    <value>Ocorreu um erro</value>
+  </data>
+  <data name="OTelefoneFoiAdicionado" xml:space="preserve">
+    <value>O Telefone foi adicionado</value>
+  </data>
+  <data name="OTelefoneFoiRemovido" xml:space="preserve">
+    <value>O Telefone foi removido</value>
+  </data>
+  <data name="Enviar" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="FornecaSeuEmail" xml:space="preserve">
+    <value>Forneça seu e-mail</value>
+  </data>
+  <data name="CliqueAquiParaEfetuarLogin" xml:space="preserve">
+    <value>clique aqui para efetuar login</value>
+  </data>
+  <data name="CrieUmaNovaSenha" xml:space="preserve">
+    <value>Crie uma nova senha</value>
+  </data>
+  <data name="EmailMessageEsqueciMinhaSenha" xml:space="preserve">
+    <value>Por favor altere sua senha clicando &lt;a href='{0}'&gt;aqui&lt;/a&gt;</value>
+  </data>
+  <data name="EsqueciMinhaSenha" xml:space="preserve">
+    <value>Esqueci minha senha</value>
+  </data>
+  <data name="PorFavor" xml:space="preserve">
+    <value>Por favor</value>
+  </data>
+  <data name="SuaSenhaFoiResetada" xml:space="preserve">
+    <value>Sua senha foi resetada</value>
+  </data>
+  <data name="AdicionarTelefone" xml:space="preserve">
+    <value>Adicionar Telefone</value>
+  </data>
+  <data name="AdicioneUmNumero" xml:space="preserve">
+    <value>Adicione um número</value>
+  </data>
+  <data name="DigiteSeuCodigoDeSeguranca" xml:space="preserve">
+    <value>Digite seu código de segurança</value>
+  </data>
+  <data name="EnviarCodigoDeVerificacao" xml:space="preserve">
+    <value>Enviar código de verificação</value>
+  </data>
+  <data name="FalhaAoAdicionarTelefone" xml:space="preserve">
+    <value>Falha ao adicionar telefone</value>
+  </data>
+  <data name="OCodigoDeSegurancaE" xml:space="preserve">
+    <value>O código de segurança é</value>
+  </data>
+  <data name="OLoginFoiRemovido" xml:space="preserve">
+    <value>O Login foi removido</value>
+  </data>
+  <data name="VerificarNumeroDeTelefone" xml:space="preserve">
+    <value>Verificar número de telefone</value>
+  </data>
+  <data name="LoginFailure" xml:space="preserve">
+    <value>Falha de login</value>
+  </data>
+  <data name="UnsuccessfulLoginWithService" xml:space="preserve">
+    <value>Login malsucedido com serviço</value>
+  </data>
+</root>

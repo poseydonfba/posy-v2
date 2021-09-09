@@ -1,0 +1,9 @@
+﻿@using Posy.V2.Infra.CrossCutting.Common.Resources
+@{
+    Layout = "~/Views/Shared/_Account.cshtml";
+    ViewBag.Title = UIConfigLogin.LoginFailure;
+}
+<hgroup>
+    <h2>@ViewBag.Title.</h2>
+    <h3 class="text-danger">@UIConfigLogin.UnsuccessfulLoginWithService</h3>
+</hgroup>

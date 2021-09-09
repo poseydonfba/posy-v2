@@ -1,0 +1,81 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_PrincipalComunidade.cshtml";
+    ViewBag.Title = "ShowModerador";
+}
+
+<div class="ms-cnt-blc ms-cnt-moderadores">
+    <div class="view-titulo">
+        <div class="ms-cnt-tit-blc">
+            <h1 class="ms-tit-blc-txt icon-people">@Posy.V2.Infra.CrossCutting.Common.Resources.UIConfig.Moderadores</h1>
+            <div class="ms-tit-blc-line"></div>
+        </div>
+    </div>
+    <div class="view-pager vp1"></div>
+    <div class="view-page"></div>
+    <div class="view-pager vp2"></div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            fnView();
+
+            $(document).on("click", ".btnMenuItem", function () {
+
+                if ($(this).attr("opcao") == "E")
+                    fnExcluirModerador($(this));
+
+            });
+
+            function fnExcluirModerador(objBtn) {
+
+                var objContainerLoading = $(".tooltip-dropmenu-container[cp=" + objBtn.attr("cp") + "]");
+                objContainerLoading.buttonLoader('start');
+
+                var model = new Object();
+                model.ModeradorId = objBtn.attr("cp");
+
+                $.post("/ajax/moderador/delete", { model: model }, function (view) {
+
+                    $("li[cp=" + objBtn.attr("cp") + "]").fadeOut(300, function () {
+                        $(this).remove();
+                    });
+
+                    var objTitleCntMembro = $(".ms-tit-blc-btn"),
+                        totalAmigos = (objTitleCntMembro.text() === undefined || objTitleCntMembro.text() == "") ? 0 : parseInt(objTitleCntMembro.text());
+
+                    objTitleCntMembro.text((totalAmigos - 1));
+
+                }).always(function () {
+                    objContainerLoading.buttonLoader('stop');
+                });
+            }
+
+            function fnView() {
+
+                var objLoader = $(".mv-loading").boxLoader();
+
+                $.get("/ajax/moderador/template/view", function (view) {
+
+                    $(".view-page").html(view[1]).fadeIn("slow");
+
+                    if (view[0] != "")
+                        $(".view-titulo").html(view[0]).fadeIn("slow");
+
+                    if (view[2] != "")
+                        $(".view-pager").html(view[2]).fadeIn("slow");
+
+                    fnInicializaViewCmm();
+
+                }).always(function () {
+                    objLoader.stop();
+                });
+            }
+
+        });
+
+    </script>
+}

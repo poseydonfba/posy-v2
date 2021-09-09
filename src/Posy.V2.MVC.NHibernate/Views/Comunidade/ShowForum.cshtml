@@ -1,0 +1,126 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_PrincipalComunidade.cshtml";
+    ViewBag.Title = "ShowForum";
+}
+
+<div class="ms-cnt-blc ms-cnt-forum">
+    <div class="view-titulo">
+        <div class="ms-cnt-tit-blc">
+            <h1 class="ms-tit-blc-txt icon-cmm">@Posy.V2.Infra.CrossCutting.Common.Resources.UIConfig.Forum</h1>
+            <div class="ms-tit-blc-line"></div>
+        </div>
+    </div>
+    <div class="view-form"></div>
+    <div class="view-pager vp1"></div>
+    <div class="view-page"></div>
+    <div class="view-pager vp2"></div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var editorPerfil;
+
+            fnView();
+
+            $(document).on("click", ".btnCriarTpc", function () {
+
+                $(this).fadeOut("slow", function () {
+                    $(".cnt-criar-tpc").fadeIn("slow");
+                    $(".txtNome").focus();
+                });
+
+            });
+
+            $(document).on("click", ".btnSalvarTpcCanc", function () {
+
+                $(".cnt-criar-tpc").fadeOut("slow", function () {
+                    $(".btnCriarTpc").fadeIn("slow");
+                });
+
+            });
+
+            $(document).on("click", ".btnSalvarTpc", function () {
+                if (fnVerificaCampos("#formCriarTpc") != "n") {
+                    fnNotificacao("warning", "Preencha os campos corretamente.", V_TIME_MESSAGE);
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                    return false;
+                }
+
+                fnSalvarTopico($(this));
+            });
+
+            function fnSalvarTopico(objBtn) {
+
+                var objContainerLoading = objBtn;
+                objContainerLoading.buttonLoader('start');
+
+                var model = new Object();
+                model.Titulo = $(".txtNome").val();
+                model.Fixo = $(".dropFixo").val();
+
+                var _objEditor = editorPerfil.find('.the-new-com'),
+                    _nodeName = _objEditor.get(0).nodeName;
+
+                if (_nodeName == "IFRAME")
+                    model.Descricao = _objEditor.contents().find("body").html();
+                else
+                    model.Descricao = _objEditor.val();
+
+                $.post("/ajax/topico", { model: model }, function (response) {
+
+                    $(response).hide().prependTo(".poseydon-forum-list-size ul").fadeIn("slow");
+
+                    var objTitle = $(".ms-tit-blc-btn"),
+                        totalTit = (objTitle.text() === undefined || objTitle.text() == "") ? 0 : parseInt(objTitle.text());
+
+                    objTitle.text((totalTit + 1));
+
+                    $(".cnt-criar-tpc").fadeOut("slow", function () {
+                        $(".btnCriarTpc").fadeIn("slow");
+                    });
+
+                }).always(function () {
+                    objContainerLoading.buttonLoader('stop');
+                });
+            }
+
+            function fnView() {
+
+                var objLoader = $(".mv-loading").boxLoader();
+
+                $.get("/ajax/forum/template/view", function (view) {
+
+                    $(".view-page").html(view[1]).fadeIn("slow");
+
+                    if (view[0] != "")
+                        $(".view-titulo").html(view[0]).fadeIn("slow");
+
+                    if (view[2] != "")
+                        $(".view-pager").html(view[2]).fadeIn("slow");
+
+                    $(".view-form").html(view[3]).hide().fadeIn("slow");
+
+                    if (view[4] == 1) {
+                        $(".ed-cnt-cmt-btn").show();
+
+                        editorPerfil = $(".ed-cnt-cmt").editorHtml({ buttonsBottom: false });
+                        editorPerfil.find('.new-com-bt').click();
+                    }
+
+                    fnInicializaViewCmm();
+
+                }).always(function () {
+                    objLoader.stop();
+                });
+            }
+
+        });
+
+    </script>
+}
+
+

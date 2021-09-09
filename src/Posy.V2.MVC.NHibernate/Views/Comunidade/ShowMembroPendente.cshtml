@@ -1,0 +1,130 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_PrincipalComunidade.cshtml";
+    ViewBag.Title = "ShowMembroPendente";
+}
+
+<div class="ms-cnt-blc ms-cnt-cmp">
+    <div class="view-titulo">
+        <div class="ms-cnt-tit-blc">
+            <h1 class="ms-tit-blc-txt icon-membropend">@Posy.V2.Infra.CrossCutting.Common.Resources.UIConfig.MembrosPendentes</h1>
+            <div class="ms-tit-blc-line"></div>
+        </div>
+    </div>
+    <div class="view-pager vp1"></div>
+    <div class="view-page"></div>
+    <div class="view-pager vp2"></div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            fnView();
+
+            $(document).on("click", ".btnMenuItem", function () {
+
+                if ($(this).attr("opcao") == "A")
+                    fnAceitarMembro($(this));
+
+                else if ($(this).attr("opcao") == "R")
+                    fnRecusarMembro($(this));
+
+            });
+
+            function fnAceitarMembro(objBtn) {
+
+                var objContainerLoading = $(".tooltip-dropmenu-container[cppend=" + objBtn.attr("cppend") + "]");
+                objContainerLoading.buttonLoader('start');
+
+                var model = new Object();
+                model.MembroId = objBtn.attr("cppend");
+
+                $.post("/ajax/membro/pendente/aceitar", { model: model }, function (arrRetorno) {
+
+                    $("li[cppend=" + objBtn.attr("cppend") + "]").fadeOut(300, function () {
+                        $(this).remove();
+                    });
+
+                    var objSpanCntMembro = $(fnGetIDMenuVertical()).find("a[item=membro] span"),
+                        totalAmiPend = parseInt(objSpanCntMembro.text()),
+                        objTitleCntMembro = $(".ms-tit-blc-btn"),
+                        totalAmigos = (objTitleCntMembro.text() === undefined || objTitleCntMembro.text() == "") ? 0 : parseInt(objTitleCntMembro.text());
+
+                    if ((totalAmiPend - 1) == 0) {
+                        objSpanCntMembro.fadeOut(300, function () {
+                            $(this).remove();
+                        });
+                    } else {
+                        objSpanCntMembro.text((totalAmiPend - 1));
+                    }
+
+                    objTitleCntMembro.text((totalAmigos - 1));
+
+                }).always(function () {
+                    objContainerLoading.buttonLoader('stop');
+                });
+            }
+
+            function fnRecusarMembro(objBtn) {
+
+                var objContainerLoading = $(".tooltip-dropmenu-container[cppend=" + objBtn.attr("cppend") + "]");
+                objContainerLoading.buttonLoader('start');
+
+                var model = new Object();
+                model.MembroId = objBtn.attr("cppend");
+
+                $.post("/ajax/membro/pendente/recusar", { model: model }, function (view) {
+
+                    $("li[cppend=" + objBtn.attr("cppend") + "]").fadeOut(300, function () {
+                        $(this).remove();
+                    });
+
+                    var objSpanCntMembro = $(fnGetIDMenuVertical()).find("a[item=membro] span"),
+                        totalAmiPend = parseInt(objSpanCntMembro.text()),
+                        objTitleCntMembro = $(".ms-tit-blc-btn"),
+                        totalAmigos = (objTitleCntMembro.text() === undefined || objTitleCntMembro.text() == "") ? 0 : parseInt(objTitleCntMembro.text());
+
+                    if ((totalAmiPend - 1) == 0) {
+                        objSpanCntMembro.fadeOut(300, function () {
+                            $(this).remove();
+                        });
+                    } else {
+                        objSpanCntMembro.text((totalAmiPend - 1));
+                    }
+
+                    objTitleCntMembro.text((totalAmigos - 1));
+
+                }).always(function () {
+                    objContainerLoading.buttonLoader('stop');
+                });
+            }
+
+            function fnView() {
+
+                var objLoader = $(".mv-loading").boxLoader();
+
+                $.get("/ajax/membro/pendente/template/view", function (view) {
+
+                    $(".view-page").html(view[1]).fadeIn("slow");
+
+                    if (view[0] != "")
+                        $(".view-titulo").html(view[0]).fadeIn("slow");
+
+                    if (view[2] != "")
+                        $(".view-pager").html(view[2]).fadeIn("slow");
+
+                    fnInicializaViewCmm();
+
+                }).always(function () {
+                    objLoader.stop();
+                });
+            }
+
+        });
+
+    </script>
+}
+
+

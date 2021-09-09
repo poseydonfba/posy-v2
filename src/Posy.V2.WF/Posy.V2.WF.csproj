@@ -1,0 +1,1273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{47E3DEB3-1CA5-4549-AF57-C8DADDD6398D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Posy.V2.WF</RootNamespace>
+    <AssemblyName>Posy.V2.WF</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=4.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SimpleInjector.4.0.0\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Extensions.ExecutionContextScoping, Version=4.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SimpleInjector.Extensions.ExecutionContextScoping.4.0.0\lib\net45\SimpleInjector.Extensions.ExecutionContextScoping.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SimpleInjector.Integration.Web.4.0.0\lib\net40\SimpleInjector.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\..\packages\AspNet.ScriptManager.bootstrap.3.3.7\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\..\packages\AspNet.ScriptManager.jQuery.3.3.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.Facebook.4.0.0\lib\net451\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.Google.4.0.0\lib\net451\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.0\lib\net451\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\AddPhoneNumber.aspx" />
+    <Content Include="Account\Confirm.aspx" />
+    <Content Include="Account\Forgot.aspx" />
+    <Content Include="Account\Lockout.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Manage.aspx" />
+    <Content Include="Account\ManageLogins.aspx" />
+    <Content Include="Account\ManagePassword.aspx" />
+    <Content Include="Account\OpenAuthProviders.ascx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Account\ResetPassword.aspx" />
+    <Content Include="Account\ResetPasswordConfirmation.aspx" />
+    <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
+    <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Contact.aspx" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="css-dev\bt.buttons.css" />
+    <Content Include="css-dev\ch.chat.css" />
+    <Content Include="css-dev\ed.editor.css" />
+    <Content Include="css-dev\fm.form.css" />
+    <Content Include="css-dev\font-awesome.css" />
+    <Content Include="css-dev\ft.fotocrop.css" />
+    <Content Include="css-dev\gl.galeria.css" />
+    <Content Include="css-dev\ld.loader.css" />
+    <Content Include="css-dev\ls.lista.css" />
+    <Content Include="css-dev\mn.menu.css" />
+    <Content Include="css-dev\ms.master.css" />
+    <Content Include="css-dev\nt.notificacao.css" />
+    <Content Include="css-dev\nt.notificacao.min.css" />
+    <Content Include="css-dev\pf.perfil.css" />
+    <Content Include="css-dev\pg.paginacao.css" />
+    <Content Include="css-dev\reset.css" />
+    <Content Include="css-dev\sc.social.css" />
+    <Content Include="css-dev\tl.timeline.css" />
+    <Content Include="css-dev\tt.tooltip.css" />
+    <Content Include="css-dev\vd.video.css" />
+    <Content Include="css\animate.css" />
+    <Content Include="css\imagens\1.png" />
+    <Content Include="css\imagens\19.png" />
+    <Content Include="css\imagens\20.png" />
+    <Content Include="css\imagens\21.png" />
+    <Content Include="css\imagens\24.png" />
+    <Content Include="css\imagens\8.png" />
+    <Content Include="css\imagens\albuns\posedon01\01.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\02.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\03.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\04.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\05.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\06.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\07.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\08.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\09.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\10.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\11.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\12.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\13.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\14.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\15.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\16.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\17.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\18.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\19.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\20.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\21.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\22.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\23.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\24.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\24a.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\25.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\26.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\27.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\28.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\29.jpg" />
+    <Content Include="css\imagens\albuns\posedon01\30.jpg" />
+    <Content Include="css\imagens\bg.jpg" />
+    <Content Include="css\imagens\bg1.jpg" />
+    <Content Include="css\imagens\bg2.jpg" />
+    <Content Include="css\imagens\bg3.jpg" />
+    <Content Include="css\imagens\cmm\01.jpg" />
+    <Content Include="css\imagens\cmm\02.jpg" />
+    <Content Include="css\imagens\cmm\03.jpg" />
+    <Content Include="css\imagens\cmm\04.jpg" />
+    <Content Include="css\imagens\cmm\05.jpg" />
+    <Content Include="css\imagens\cmm\06.jpg" />
+    <Content Include="css\imagens\cmm\07.jpg" />
+    <Content Include="css\imagens\cmm\08.jpg" />
+    <Content Include="css\imagens\cmm\pas.jpg" />
+    <Content Include="css\imagens\crop.svg" />
+    <Content Include="css\imagens\croppedImg_702813936.png" />
+    <Content Include="css\imagens\gridme.png" />
+    <Content Include="css\imagens\icons\1443225405_font_underline.png" />
+    <Content Include="css\imagens\icons\1443225420_text-bold.png" />
+    <Content Include="css\imagens\icons\arrow-menu.png" />
+    <Content Include="css\imagens\icons\foto.png" />
+    <Content Include="css\imagens\icons\foto2.png" />
+    <Content Include="css\imagens\icons\foto3.png" />
+    <Content Include="css\imagens\icons\foto4.png" />
+    <Content Include="css\imagens\icons\menu-albuns.png" />
+    <Content Include="css\imagens\icons\menu-amigos.png" />
+    <Content Include="css\imagens\icons\menu-comunidades.png" />
+    <Content Include="css\imagens\icons\menu-depoimentos.png" />
+    <Content Include="css\imagens\icons\menu-inicio.png" />
+    <Content Include="css\imagens\icons\menu-perfil.png" />
+    <Content Include="css\imagens\icons\menu-recados.png" />
+    <Content Include="css\imagens\icons\P1-Lighticons-full-065.png" />
+    <Content Include="css\imagens\icons\P1-Lighticons-full-071.png" />
+    <Content Include="css\imagens\icons\P1-Lighticons-full-320.png" />
+    <Content Include="css\imagens\icons\recados.png" />
+    <Content Include="css\imagens\icons\sprite.png" />
+    <Content Include="css\imagens\perfil.jpg" />
+    <Content Include="css\imagens\perfil\01.jpg" />
+    <Content Include="css\imagens\perfil\02.jpg" />
+    <Content Include="css\imagens\perfil\03.jpg" />
+    <Content Include="css\imagens\perfil\04.jpg" />
+    <Content Include="css\imagens\perfil\05.jpg" />
+    <Content Include="css\imagens\perfil\06.jpg" />
+    <Content Include="css\imagens\perfil\1.png" />
+    <Content Include="css\imagens\perfil\2.png" />
+    <Content Include="css\imagens\perfil\2255140531538303.jpg" />
+    <Content Include="css\imagens\perfil\3.png" />
+    <Content Include="css\imagens\perfil\poseydon.jpg" />
+    <Content Include="css\imagens\setas\back_disabled.png" />
+    <Content Include="css\imagens\setas\back_enabled.png" />
+    <Content Include="css\imagens\setas\back_enabled_hover.png" />
+    <Content Include="css\imagens\setas\forward_disabled.png" />
+    <Content Include="css\imagens\setas\forward_enabled.png" />
+    <Content Include="css\imagens\setas\forward_enabled_hover.png" />
+    <Content Include="css\imagens\setas\sort_asc.png" />
+    <Content Include="css\imagens\setas\sort_asc_disabled.png" />
+    <Content Include="css\imagens\setas\sort_both.png" />
+    <Content Include="css\imagens\setas\sort_desc.png" />
+    <Content Include="css\imagens\setas\sort_desc_disabled.png" />
+    <Content Include="css\imagens\svg\cd-icon-arrow.svg" />
+    <Content Include="css\imagens\svg\cd-icon-budget.svg" />
+    <Content Include="css\imagens\svg\cd-icon-check.svg" />
+    <Content Include="css\imagens\svg\cd-icon-company.svg" />
+    <Content Include="css\imagens\svg\cd-icon-email.svg" />
+    <Content Include="css\imagens\svg\cd-icon-message.svg" />
+    <Content Include="css\imagens\svg\cd-icon-radio.svg" />
+    <Content Include="css\imagens\svg\cd-icon-user.svg" />
+    <Content Include="css\imagens\svg\cd-required.svg" />
+    <Content Include="css\style.min.css" />
+    <Content Include="c\cadcmm.aspx" />
+    <Content Include="c\cmm.aspx" />
+    <Content Include="c\editcmm.aspx" />
+    <Content Include="c\forum.aspx" />
+    <Content Include="c\membros.aspx" />
+    <Content Include="c\membrospend.aspx" />
+    <Content Include="c\moderadores.aspx" />
+    <Content Include="c\pesqcmm.aspx" />
+    <Content Include="c\topico.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Account\Web.config" />
+    <Content Include="img\not.psd" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="js\jquery.signalR-2.2.1.js" />
+    <Content Include="js\jquery.signalR-2.2.1.min.js" />
+    <Content Include="P\amigos.aspx" />
+    <Content Include="P\amigospend.aspx" />
+    <Content Include="P\chat.ascx" />
+    <Content Include="P\comunidades.aspx" />
+    <Content Include="P\depoimentos.aspx" />
+    <Content Include="P\editperfil.aspx" />
+    <Content Include="P\perfil.aspx" />
+    <Content Include="P\recados.aspx" />
+    <Content Include="P\videos.aspx" />
+    <Content Include="WebServices\ComunidadeWebService.asmx" />
+    <Content Include="WebServices\UsuarioWebService.asmx" />
+    <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
+    <Content Include="img\bg.jpg" />
+    <Content Include="img\cd-icon-location.svg" />
+    <Content Include="img\cmm\0.jpg" />
+    <Content Include="img\cmm\0b92516d-539c-451c-974b-3a22ac8deffb\1.jpg" />
+    <Content Include="img\cmm\0d31ef57-1da3-42b5-b238-99e6653fb106\1.jpg" />
+    <Content Include="img\cmm\1\1.jpg" />
+    <Content Include="img\cmm\2\1.jpg" />
+    <Content Include="img\cmm\3df10c0c-834c-4d0d-91e2-1bee31b57c86\1.jpg" />
+    <Content Include="img\cmm\3\1.jpg" />
+    <Content Include="img\cmm\4\1.jpg" />
+    <Content Include="img\cmm\5\1.jpg" />
+    <Content Include="img\cmm\6ee9e3ce-b7d4-41af-83e4-1e16fff55e96\1.jpg" />
+    <Content Include="img\cmm\75fe77bb-95e5-496c-8e6f-18e7caa7a7e3\1.jpg" />
+    <Content Include="img\cmm\old\1\1.jpg" />
+    <Content Include="img\cmm\old\2\1.jpg" />
+    <Content Include="img\cmm\old\3\1.jpg" />
+    <Content Include="img\cmm\old\4\1.jpg" />
+    <Content Include="img\cmm\old\5\1.jpg" />
+    <Content Include="img\edthtml\font-italic.png" />
+    <Content Include="img\edthtml\font-underline.png" />
+    <Content Include="img\edthtml\fore-color.png" />
+    <Content Include="img\edthtml\fore-color2.png" />
+    <Content Include="img\edthtml\html.png" />
+    <Content Include="img\edthtml\smile.png" />
+    <Content Include="img\edthtml\text-bold.png" />
+    <Content Include="img\emojis\5WUpcPZ.png" />
+    <Content Include="img\emojis\ftowh0s.png" />
+    <Content Include="img\emojis\G4EjwqQ.jpg" />
+    <Content Include="img\emojis\gR9juts.png" />
+    <Content Include="img\emojis\H5Jba8r.png" />
+    <Content Include="img\emojis\jfTyB5F.png" />
+    <Content Include="img\emojis\MllSy5N.png" />
+    <Content Include="img\emojis\qKia58V.png" />
+    <Content Include="img\emojis\tOLNJgg.png" />
+    <Content Include="img\emojis\UjZLf1R.png" />
+    <Content Include="img\emojis\uSpaYy8.png" />
+    <Content Include="img\emojis\UUrRRo6.png" />
+    <Content Include="img\emojis\VAn5Geq.png" />
+    <Content Include="img\emojis\voEvJld.png" />
+    <Content Include="img\emojis\VSQxJKL.png" />
+    <Content Include="img\emoticon\act-up.png" />
+    <Content Include="img\emoticon\airplane.png" />
+    <Content Include="img\emoticon\alien.png" />
+    <Content Include="img\emoticon\angel.png" />
+    <Content Include="img\emoticon\angry.png" />
+    <Content Include="img\emoticon\arrogant.png" />
+    <Content Include="img\emoticon\bad.png" />
+    <Content Include="img\emoticon\bashful.png" />
+    <Content Include="img\emoticon\beat-up.png" />
+    <Content Include="img\emoticon\beauty.png" />
+    <Content Include="img\emoticon\beer.png" />
+    <Content Include="img\emoticon\blowkiss.png" />
+    <Content Include="img\emoticon\bomb.png" />
+    <Content Include="img\emoticon\bowl.png" />
+    <Content Include="img\emoticon\boy.png" />
+    <Content Include="img\emoticon\brb.png" />
+    <Content Include="img\emoticon\bye.png" />
+    <Content Include="img\emoticon\cake.png" />
+    <Content Include="img\emoticon\call-me.png" />
+    <Content Include="img\emoticon\camera.png" />
+    <Content Include="img\emoticon\can.png" />
+    <Content Include="img\emoticon\car.png" />
+    <Content Include="img\emoticon\cat.png" />
+    <Content Include="img\emoticon\chicken.png" />
+    <Content Include="img\emoticon\clap.png" />
+    <Content Include="img\emoticon\clock.png" />
+    <Content Include="img\emoticon\cloudy.png" />
+    <Content Include="img\emoticon\clover.png" />
+    <Content Include="img\emoticon\clown.png" />
+    <Content Include="img\emoticon\coffee.png" />
+    <Content Include="img\emoticon\coins.png" />
+    <Content Include="img\emoticon\computer.png" />
+    <Content Include="img\emoticon\confused.png" />
+    <Content Include="img\emoticon\console.png" />
+    <Content Include="img\emoticon\cow.png" />
+    <Content Include="img\emoticon\cowboy.png" />
+    <Content Include="img\emoticon\crying.png" />
+    <Content Include="img\emoticon\curl-lip.png" />
+    <Content Include="img\emoticon\curse.png" />
+    <Content Include="img\emoticon\cute.png" />
+    <Content Include="img\emoticon\dance.png" />
+    <Content Include="img\emoticon\dazed.png" />
+    <Content Include="img\emoticon\desire.png" />
+    <Content Include="img\emoticon\devil.png" />
+    <Content Include="img\emoticon\disapointed.png" />
+    <Content Include="img\emoticon\disdain.png" />
+    <Content Include="img\emoticon\doctor.png" />
+    <Content Include="img\emoticon\dog.png" />
+    <Content Include="img\emoticon\doh.png" />
+    <Content Include="img\emoticon\dont-know.png" />
+    <Content Include="img\emoticon\drink.png" />
+    <Content Include="img\emoticon\drool.png" />
+    <Content Include="img\emoticon\eat.png" />
+    <Content Include="img\emoticon\embarrassed.png" />
+    <Content Include="img\emoticon\excruciating.png" />
+    <Content Include="img\emoticon\eyeroll.png" />
+    <Content Include="img\emoticon\film.png" />
+    <Content Include="img\emoticon\fingers-crossed.png" />
+    <Content Include="img\emoticon\flag.png" />
+    <Content Include="img\emoticon\foot-in-mouth.png" />
+    <Content Include="img\emoticon\freaked-out.png" />
+    <Content Include="img\emoticon\ghost.png" />
+    <Content Include="img\emoticon\giggle.png" />
+    <Content Include="img\emoticon\girl.png" />
+    <Content Include="img\emoticon\glasses-cool.png" />
+    <Content Include="img\emoticon\glasses-nerdy.png" />
+    <Content Include="img\emoticon\go-away.png" />
+    <Content Include="img\emoticon\goat.png" />
+    <Content Include="img\emoticon\good.png" />
+    <Content Include="img\emoticon\hammer.png" />
+    <Content Include="img\emoticon\handcuffs.png" />
+    <Content Include="img\emoticon\handshake.png" />
+    <Content Include="img\emoticon\highfive.png" />
+    <Content Include="img\emoticon\hug-left.png" />
+    <Content Include="img\emoticon\hug-right.png" />
+    <Content Include="img\emoticon\hungry.png" />
+    <Content Include="img\emoticon\hypnotized.png" />
+    <Content Include="img\emoticon\in-love.png" />
+    <Content Include="img\emoticon\island.png" />
+    <Content Include="img\emoticon\jump.png" />
+    <Content Include="img\emoticon\kiss.png" />
+    <Content Include="img\emoticon\knife.png" />
+    <Content Include="img\emoticon\lamp.png" />
+    <Content Include="img\emoticon\lashes.png" />
+    <Content Include="img\emoticon\laugh.png" />
+    <Content Include="img\emoticon\liquor.png" />
+    <Content Include="img\emoticon\love-over.png" />
+    <Content Include="img\emoticon\love.png" />
+    <Content Include="img\emoticon\lying.png" />
+    <Content Include="img\emoticon\mad-tongue.png" />
+    <Content Include="img\emoticon\mail.png" />
+    <Content Include="img\emoticon\mean.png" />
+    <Content Include="img\emoticon\meeting.png" />
+    <Content Include="img\emoticon\mobile.png" />
+    <Content Include="img\emoticon\moneymouth.png" />
+    <Content Include="img\emoticon\monkey.png" />
+    <Content Include="img\emoticon\moon.png" />
+    <Content Include="img\emoticon\msn-away.png" />
+    <Content Include="img\emoticon\msn-busy.png" />
+    <Content Include="img\emoticon\msn.png" />
+    <Content Include="img\emoticon\msn_online.png" />
+    <Content Include="img\emoticon\musical-note.png" />
+    <Content Include="img\emoticon\nailbiting.png" />
+    <Content Include="img\emoticon\neutral.png" />
+    <Content Include="img\emoticon\party.png" />
+    <Content Include="img\emoticon\peace.png" />
+    <Content Include="img\emoticon\phone.png" />
+    <Content Include="img\emoticon\pig.png" />
+    <Content Include="img\emoticon\pill.png" />
+    <Content Include="img\emoticon\pissed-off.png" />
+    <Content Include="img\emoticon\pizza.png" />
+    <Content Include="img\emoticon\plate.png" />
+    <Content Include="img\emoticon\poop.png" />
+    <Content Include="img\emoticon\pray.png" />
+    <Content Include="img\emoticon\present.png" />
+    <Content Include="img\emoticon\pumpkin.png" />
+    <Content Include="img\emoticon\qq.png" />
+    <Content Include="img\emoticon\question.png" />
+    <Content Include="img\emoticon\quiet.png" />
+    <Content Include="img\emoticon\rain.png" />
+    <Content Include="img\emoticon\rainbow.png" />
+    <Content Include="img\emoticon\rose-dead.png" />
+    <Content Include="img\emoticon\rose.png" />
+    <Content Include="img\emoticon\rotfl.png" />
+    <Content Include="img\emoticon\sad.png" />
+    <Content Include="img\emoticon\sarcastic.png" />
+    <Content Include="img\emoticon\search.png" />
+    <Content Include="img\emoticon\secret.png" />
+    <Content Include="img\emoticon\shame.png" />
+    <Content Include="img\emoticon\sheep.png" />
+    <Content Include="img\emoticon\shock.png" />
+    <Content Include="img\emoticon\shout.png" />
+    <Content Include="img\emoticon\shut-mouth.png" />
+    <Content Include="img\emoticon\sick.png" />
+    <Content Include="img\emoticon\sigarette.png" />
+    <Content Include="img\emoticon\silly.png" />
+    <Content Include="img\emoticon\skeleton.png" />
+    <Content Include="img\emoticon\skywalker.png" />
+    <Content Include="img\emoticon\sleepy.png" />
+    <Content Include="img\emoticon\smile-big.png" />
+    <Content Include="img\emoticon\smile.png" />
+    <Content Include="img\emoticon\smirk.png" />
+    <Content Include="img\emoticon\snail.png" />
+    <Content Include="img\emoticon\snicker.png" />
+    <Content Include="img\emoticon\snowman.png" />
+    <Content Include="img\emoticon\soccerball.png" />
+    <Content Include="img\emoticon\soldier.png" />
+    <Content Include="img\emoticon\star.png" />
+    <Content Include="img\emoticon\starving.png" />
+    <Content Include="img\emoticon\struggle.png" />
+    <Content Include="img\emoticon\sun.png" />
+    <Content Include="img\emoticon\sweat.png" />
+    <Content Include="img\emoticon\teeth.png" />
+    <Content Include="img\emoticon\terror.png" />
+    <Content Include="img\emoticon\thinking.png" />
+    <Content Include="img\emoticon\thunder.png" />
+    <Content Include="img\emoticon\tongue.png" />
+    <Content Include="img\emoticon\tremble.png" />
+    <Content Include="img\emoticon\turtle.png" />
+    <Content Include="img\emoticon\tv.png" />
+    <Content Include="img\emoticon\umbrella.png" />
+    <Content Include="img\emoticon\vampire.png" />
+    <Content Include="img\emoticon\victory.png" />
+    <Content Include="img\emoticon\waiting.png" />
+    <Content Include="img\emoticon\watermelon.png" />
+    <Content Include="img\emoticon\weep.png" />
+    <Content Include="img\emoticon\wilt.png" />
+    <Content Include="img\emoticon\wink.png" />
+    <Content Include="img\emoticon\worship.png" />
+    <Content Include="img\emoticon\yawn.png" />
+    <Content Include="img\emoticon\yin-yang.png" />
+    <Content Include="img\favicon.ico" />
+    <Content Include="img\favicon.png" />
+    <Content Include="img\gh-icons.png" />
+    <Content Include="img\loading.gif" />
+    <Content Include="img\mh-cmm.png" />
+    <Content Include="img\mh-cmm1.png" />
+    <Content Include="img\mh-config.png" />
+    <Content Include="img\mh-config1.png" />
+    <Content Include="img\mh-inicio.png" />
+    <Content Include="img\mh-people.png" />
+    <Content Include="img\mh-people1.png" />
+    <Content Include="img\mh-perfil.png" />
+    <Content Include="img\mh-perfil1.png" />
+    <Content Include="img\mh-sair.png" />
+    <Content Include="img\mv-addamigo.png" />
+    <Content Include="img\mv-aguradamigo.png" />
+    <Content Include="img\mv-album.png" />
+    <Content Include="img\mv-cmm.png" />
+    <Content Include="img\mv-delamigo.png" />
+    <Content Include="img\mv-depo.png" />
+    <Content Include="img\mv-edit.png" />
+    <Content Include="img\mv-inicio.png" />
+    <Content Include="img\mv-lix.png" />
+    <Content Include="img\mv-people.png" />
+    <Content Include="img\mv-perfil.png" />
+    <Content Include="img\mv-recado.png" />
+    <Content Include="img\mv-video.png" />
+    <Content Include="img\not-error.png" />
+    <Content Include="img\not-notice.png" />
+    <Content Include="img\not-success.png" />
+    <Content Include="img\not-warning.png" />
+    <Content Include="img\open-menu.png" />
+    <Content Include="img\outros\1443756995_add_user.png" />
+    <Content Include="img\outros\1443757030_birthday_cake.png" />
+    <Content Include="img\outros\1443757037_checked_user.png" />
+    <Content Include="img\outros\1443757041_google_web_search.png" />
+    <Content Include="img\outros\1443757434_trash.png" />
+    <Content Include="img\perfil\0.jpg" />
+    <Content Include="img\perfil\0751c38b-ef3d-47a3-8380-050c50b0aa7c\1.jpg" />
+    <Content Include="img\perfil\10\1.jpg" />
+    <Content Include="img\perfil\11\1.jpg" />
+    <Content Include="img\perfil\12\1.jpg" />
+    <Content Include="img\perfil\13\1.jpg" />
+    <Content Include="img\perfil\14\1.jpg" />
+    <Content Include="img\perfil\15\1.jpg" />
+    <Content Include="img\perfil\16\1.jpg" />
+    <Content Include="img\perfil\17\1.jpg" />
+    <Content Include="img\perfil\18\1.jpg" />
+    <Content Include="img\perfil\19\1.jpg" />
+    <Content Include="img\perfil\1a3ab194-378a-4212-ad95-559f09b6e2b0\1.jpg" />
+    <Content Include="img\perfil\1fe808db-226c-4288-a7b7-2ded5bb919b8\1.jpg" />
+    <Content Include="img\perfil\1\1.jpg" />
+    <Content Include="img\perfil\1\cmmtmp\20151013100313-01.jpg" />
+    <Content Include="img\perfil\20af8e90-e129-40e7-b48a-588f2241148d\1.jpg" />
+    <Content Include="img\perfil\20\1.jpg" />
+    <Content Include="img\perfil\3016580a-e303-4ba6-a1b6-4c1e9a5dcda5\1.jpg" />
+    <Content Include="img\perfil\3\1.jpg" />
+    <Content Include="img\perfil\40ab700e-d1f4-47d8-a17d-c4831f5cb8d5\1.jpg" />
+    <Content Include="img\perfil\47631809-cef4-4239-bc21-e93562a5a160\1.jpg" />
+    <Content Include="img\perfil\4e3a7ddb-f74e-4778-8a21-dd376512929f\1.jpg" />
+    <Content Include="img\perfil\769a067f-b699-4bf1-bcf1-de4efbfe0e13\1.jpg" />
+    <Content Include="img\perfil\7b4fe09a-b854-4480-9a65-9f6538969012\1.jpg" />
+    <Content Include="img\perfil\7b4fe09a-b854-4480-9a65-9f6538969012\cmmtmp\20151013100313-01.jpg" />
+    <Content Include="img\perfil\7\1.jpg" />
+    <Content Include="img\perfil\7\cmmtmp\20151012190323-2fdcbadc460c641537270093904689a8.jpg" />
+    <Content Include="img\perfil\87b8d7cf-db7d-45c6-972a-8d856a47d946\1.jpg" />
+    <Content Include="img\perfil\8d13b8d6-be23-4828-99cb-bb8d9f2e03d2\1.jpg" />
+    <Content Include="img\perfil\8\1.jpg" />
+    <Content Include="img\perfil\9388cb84-21dc-4ad6-af29-0ac705ba49e3\1.jpg" />
+    <Content Include="img\perfil\956ad60d-6f00-400b-88ec-215d35a9cc22\1.jpg" />
+    <Content Include="img\perfil\9\1.jpg" />
+    <Content Include="img\perfil\a12e9231-4f91-4060-8f5b-10e6246ea338\1.jpg" />
+    <Content Include="img\perfil\a294fa47-a712-4588-ad1b-9fc60c5b83f4\1.jpg" />
+    <Content Include="img\perfil\b57fe827-5b3b-40ad-8a77-fa02fb09561f\1.jpg" />
+    <Content Include="img\perfil\b7c5c7a5-f94f-496f-b917-7f8d6a78c3b9\1.jpg" />
+    <Content Include="img\perfil\bbd4b93d-ead2-471a-b3e4-a23da8ca92a6\1.jpg" />
+    <Content Include="img\perfil\be7c891b-f14a-4c3f-ab76-43577f18eed9\1.jpg" />
+    <Content Include="img\perfil\bed0f51e-b4b6-488e-8871-4f5f4a620f74\1.jpg" />
+    <Content Include="img\perfil\cc629e43-0c80-4245-9d47-7055e1da3598\1.jpg" />
+    <Content Include="img\perfil\d0b69360-da73-453e-acd5-a8a4835e141c\1.jpg" />
+    <Content Include="img\perfil\dc132d99-55e7-419a-8289-fe40b70d8d54\1.jpg" />
+    <Content Include="img\perfil\f8e2a570-917c-4f3e-b47e-d8342104e878\1.jpg" />
+    <Content Include="img\perfil\old\10\1.jpg" />
+    <Content Include="img\perfil\old\11\1.jpg" />
+    <Content Include="img\perfil\old\12\1.jpg" />
+    <Content Include="img\perfil\old\13\1.jpg" />
+    <Content Include="img\perfil\old\14\1.jpg" />
+    <Content Include="img\perfil\old\15\1.jpg" />
+    <Content Include="img\perfil\old\16\1.jpg" />
+    <Content Include="img\perfil\old\17\1.jpg" />
+    <Content Include="img\perfil\old\18\1.jpg" />
+    <Content Include="img\perfil\old\19\1.jpg" />
+    <Content Include="img\perfil\old\1\1.jpg" />
+    <Content Include="img\perfil\old\1\cmmtmp\20151013100313-01.jpg" />
+    <Content Include="img\perfil\old\20\1.jpg" />
+    <Content Include="img\perfil\old\3\1.jpg" />
+    <Content Include="img\perfil\old\7\1.jpg" />
+    <Content Include="img\perfil\old\7\cmmtmp\20151012190323-2fdcbadc460c641537270093904689a8.jpg" />
+    <Content Include="img\perfil\old\8\1.jpg" />
+    <Content Include="img\perfil\old\9\1.jpg" />
+    <Content Include="img\social\facebook.png" />
+    <Content Include="img\social\googleplus.png" />
+    <Content Include="img\social\linkedin.png" />
+    <Content Include="img\social\twitter.png" />
+    <Content Include="img\svg\cd-icon-arrow.svg" />
+    <Content Include="img\svg\cd-icon-budget.svg" />
+    <Content Include="img\svg\cd-icon-check.svg" />
+    <Content Include="img\svg\cd-icon-company.svg" />
+    <Content Include="img\svg\cd-icon-email.svg" />
+    <Content Include="img\svg\cd-icon-message.svg" />
+    <Content Include="img\svg\cd-icon-radio.svg" />
+    <Content Include="img\svg\cd-icon-user.svg" />
+    <Content Include="img\svg\cd-required.svg" />
+    <Content Include="img\tipsy1.gif" />
+    <Content Include="img\tipsyold.gif" />
+    <Content Include="js-dev\chat.js" />
+    <Content Include="js-dev\config.js" />
+    <Content Include="js-dev\c\cadcmm.js" />
+    <Content Include="js-dev\c\cmm.js" />
+    <Content Include="js-dev\c\editcmm.js" />
+    <Content Include="js-dev\c\forum.js" />
+    <Content Include="js-dev\c\foto.js" />
+    <Content Include="js-dev\c\membros.js" />
+    <Content Include="js-dev\c\membrospend.js" />
+    <Content Include="js-dev\c\moderadores.js" />
+    <Content Include="js-dev\c\pesqcmm.js" />
+    <Content Include="js-dev\c\topicos.js" />
+    <Content Include="js-dev\lib\buttonloader.js" />
+    <Content Include="js-dev\lib\classie.js" />
+    <Content Include="js-dev\lib\editorhtml.js" />
+    <Content Include="js-dev\lib\html5.js" />
+    <Content Include="js-dev\lib\jquery-2.1.1.js" />
+    <Content Include="js-dev\lib\jquery-2.1.1.min.js" />
+    <Content Include="js-dev\lib\modernizr.js" />
+    <Content Include="js-dev\lib\modernizr.min.js" />
+    <Content Include="js-dev\lib\notification.js" />
+    <Content Include="js-dev\lib\tipsy.js" />
+    <Content Include="js-dev\login.js" />
+    <Content Include="js-dev\master.js" />
+    <Content Include="js-dev\p\amigos.js" />
+    <Content Include="js-dev\p\amigospend.js" />
+    <Content Include="js-dev\p\cadperfil.js" />
+    <Content Include="js-dev\p\comunidades.js" />
+    <Content Include="js-dev\p\depoimentos.js" />
+    <Content Include="js-dev\p\foto.js" />
+    <Content Include="js-dev\p\inicio.js" />
+    <Content Include="js-dev\p\perfil.js" />
+    <Content Include="js-dev\p\recados.js" />
+    <Content Include="js-dev\p\videos.js" />
+    <Content Include="js-dev\script.js" />
+    <Content Include="js-dev\script.login.js" />
+    <Content Include="js-dev\social.js" />
+    <Content Include="js\amigos.min.js" />
+    <Content Include="js\amigospend.min.js" />
+    <Content Include="js\cadcmm.min.js" />
+    <Content Include="js\cadperfil.min.js" />
+    <Content Include="js\cmm.min.js" />
+    <Content Include="js\comunidades.min.js" />
+    <Content Include="js\depoimentos.min.js" />
+    <Content Include="js\editcmm.min.js" />
+    <Content Include="js\forum.min.js" />
+    <Content Include="js\fotoc.min.js" />
+    <Content Include="js\fotop.min.js" />
+    <Content Include="js\inicio.min.js" />
+    <Content Include="js\membros.min.js" />
+    <Content Include="js\membrospend.min.js" />
+    <Content Include="js\moderadores.min.js" />
+    <Content Include="js\old\amigos.min.js" />
+    <Content Include="js\old\amigospend.min.js" />
+    <Content Include="js\old\cadcmm.min.js" />
+    <Content Include="js\old\cadperfil.min.js" />
+    <Content Include="js\old\cmm.min.js" />
+    <Content Include="js\old\comunidades.min.js" />
+    <Content Include="js\old\depoimentos.min.js" />
+    <Content Include="js\old\editcmm.min.js" />
+    <Content Include="js\old\forum.min.js" />
+    <Content Include="js\old\fotoc.min.js" />
+    <Content Include="js\old\fotop.min.js" />
+    <Content Include="js\old\inicio.min.js" />
+    <Content Include="js\old\membros.min.js" />
+    <Content Include="js\old\membrospend.min.js" />
+    <Content Include="js\old\moderadores.min.js" />
+    <Content Include="js\old\perfil.min.js" />
+    <Content Include="js\old\pesqcmm.min.js" />
+    <Content Include="js\old\recados.min.js" />
+    <Content Include="js\old\script.login.min.js" />
+    <Content Include="js\old\script.min.js" />
+    <Content Include="js\old\topicos.min.js" />
+    <Content Include="js\old\videos.min.js" />
+    <Content Include="js\perfil.min.js" />
+    <Content Include="js\pesqcmm.min.js" />
+    <Content Include="js\plugin\check_browser_close.js" />
+    <Content Include="js\plugin\fm.scrollator.jquery.js" />
+    <Content Include="js\plugin\foto.crop.js" />
+    <Content Include="js\plugin\jquery.buttonLoader.min.js" />
+    <Content Include="js\plugin\jquery.inview.js" />
+    <Content Include="js\plugin\jquery.inview.min.js" />
+    <Content Include="js\plugin\simpleUpload.min.js" />
+    <Content Include="js\recados.min.js" />
+    <Content Include="js\script.login.min.js" />
+    <Content Include="js\script.min.js" />
+    <Content Include="js\topicos.min.js" />
+    <Content Include="js\videos.min.js" />
+    <Content Include="P\inicio.aspx" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Site.Master" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+    <Content Include="Site.Mobile.Master" />
+    <Content Include="SitePrincipal.Master" />
+    <Content Include="WebServices\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\AddPhoneNumber.aspx.cs">
+      <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AddPhoneNumber.aspx.designer.cs">
+      <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Confirm.aspx.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Confirm.aspx.designer.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Forgot.aspx.cs">
+      <DependentUpon>Forgot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Forgot.aspx.designer.cs">
+      <DependentUpon>Forgot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Lockout.aspx.cs">
+      <DependentUpon>Lockout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Lockout.aspx.designer.cs">
+      <DependentUpon>Lockout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ManageLogins.aspx.cs">
+      <DependentUpon>ManageLogins.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ManageLogins.aspx.designer.cs">
+      <DependentUpon>ManageLogins.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ManagePassword.aspx.cs">
+      <DependentUpon>ManagePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ManagePassword.aspx.designer.cs">
+      <DependentUpon>ManagePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ResetPasswordConfirmation.aspx.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ResetPasswordConfirmation.aspx.designer.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TwoFactorAuthenticationSignIn.aspx.cs">
+      <DependentUpon>TwoFactorAuthenticationSignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TwoFactorAuthenticationSignIn.aspx.designer.cs">
+      <DependentUpon>TwoFactorAuthenticationSignIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\VerifyPhoneNumber.aspx.cs">
+      <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
+      <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\PageInitializerModule.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Configuration\FacebookConfiguration.cs" />
+    <Compile Include="Configuration\GoogleConfiguration.cs" />
+    <Compile Include="Configuration\TwitterConfiguration.cs" />
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="c\cadcmm.aspx.cs">
+      <DependentUpon>cadcmm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="c\cadcmm.aspx.designer.cs">
+      <DependentUpon>cadcmm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="c\cmm.aspx.cs">
+      <DependentUpon>cmm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="c\cmm.aspx.designer.cs">
+      <DependentUpon>cmm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="c\editcmm.aspx.cs">
+      <DependentUpon>editcmm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="c\editcmm.aspx.designer.cs">
+      <DependentUpon>editcmm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="c\forum.aspx.cs">
+      <DependentUpon>forum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="c\forum.aspx.designer.cs">
+      <DependentUpon>forum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="c\membros.aspx.cs">
+      <DependentUpon>membros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="c\membros.aspx.designer.cs">
+      <DependentUpon>membros.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="c\membrospend.aspx.cs">
+      <DependentUpon>membrospend.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="c\membrospend.aspx.designer.cs">
+      <DependentUpon>membrospend.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="c\moderadores.aspx.cs">
+      <DependentUpon>moderadores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="c\moderadores.aspx.designer.cs">
+      <DependentUpon>moderadores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="c\pesqcmm.aspx.cs">
+      <DependentUpon>pesqcmm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="c\pesqcmm.aspx.designer.cs">
+      <DependentUpon>pesqcmm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="c\topico.aspx.cs">
+      <DependentUpon>topico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="c\topico.aspx.designer.cs">
+      <DependentUpon>topico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\FuncaoJson.cs" />
+    <Compile Include="Helpers\FuncaoSite.cs" />
+    <Compile Include="Helpers\PerfilLogado.cs" />
+    <Compile Include="Helpers\ResponseService.cs" />
+    <Compile Include="Hub\ChatHub.cs" />
+    <Compile Include="Hub\ChatService.cs" />
+    <Compile Include="Hub\Config\SignalRExtensions.cs" />
+    <Compile Include="Hub\Config\SimpleInjectorHubActivator.cs" />
+    <Compile Include="Hub\Config\SimpleInjectorHubDispatcher.cs" />
+    <Compile Include="Hub\IChatService.cs" />
+    <Compile Include="JsonNet.PrivateSettersContractResolvers\PrivateSettersContractResolvers.cs" />
+    <Compile Include="Models\AceitarMembroModel.cs" />
+    <Compile Include="Models\AceitarRecusarDepoimentoModel.cs" />
+    <Compile Include="Models\AceitarSolicitacaoAmizadeModel.cs" />
+    <Compile Include="Models\AdicionarAmigoModel.cs" />
+    <Compile Include="Models\AdicionarModeradorModel.cs" />
+    <Compile Include="Models\BloquearPerfilModel.cs" />
+    <Compile Include="Models\ChatResponsePerfilModel.cs" />
+    <Compile Include="Models\ComentarioPerfilModel.cs" />
+    <Compile Include="Models\CriarComunidadeModel.cs" />
+    <Compile Include="Models\EditarPerfilComunidadeModel.cs" />
+    <Compile Include="Models\EditarPerfilModel.cs" />
+    <Compile Include="Models\EditarPrivacidadeComunidadeModel.cs" />
+    <Compile Include="Models\ExcluirAmigoModel.cs" />
+    <Compile Include="Models\ExcluirComentarioPerfilModel.cs" />
+    <Compile Include="Models\ExcluirDepoimentoModel.cs" />
+    <Compile Include="Models\ExcluirModeradorModel.cs" />
+    <Compile Include="Models\ExcluirPostPerfilModel.cs" />
+    <Compile Include="Models\ExcluirRecadoComentarioModel.cs" />
+    <Compile Include="Models\ExcluirRecadoModel.cs" />
+    <Compile Include="Models\ExcluirTopicoPostModel.cs" />
+    <Compile Include="Models\ExcluirVideoComentarioModel.cs" />
+    <Compile Include="Models\ExcluirVideoModel.cs" />
+    <Compile Include="Models\HtmlSelect.cs" />
+    <Compile Include="Models\IdentityHelper.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\LoginTokenResult.cs" />
+    <Compile Include="Models\OcultarPostPerfilModel.cs" />
+    <Compile Include="Models\PostPerfilModel.cs" />
+    <Compile Include="Models\RecusarMembroModel.cs" />
+    <Compile Include="Models\RegistrarUsuarioModel.cs" />
+    <Compile Include="Models\SalvarDepoimentoModel.cs" />
+    <Compile Include="Models\SalvarFotoPerfilModel.cs" />
+    <Compile Include="Models\SalvarPrivacidadeComunidadeModel.cs" />
+    <Compile Include="Models\SalvarPrivacidadePerfilModel.cs" />
+    <Compile Include="Models\SalvarRecadoComentarioModel.cs" />
+    <Compile Include="Models\SalvarRecadoModel.cs" />
+    <Compile Include="Models\SalvarTopicoModel.cs" />
+    <Compile Include="Models\SalvarTopicoPostModel.cs" />
+    <Compile Include="Models\SalvarVideoComentarioModel.cs" />
+    <Compile Include="Models\SalvarVideoModel.cs" />
+    <Compile Include="Models\TwitterDto.cs" />
+    <Compile Include="Models\UsuarioIdRecusarModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="P\amigos.aspx.cs">
+      <DependentUpon>amigos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="P\amigos.aspx.designer.cs">
+      <DependentUpon>amigos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="P\amigospend.aspx.cs">
+      <DependentUpon>amigospend.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="P\amigospend.aspx.designer.cs">
+      <DependentUpon>amigospend.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="P\chat.ascx.cs">
+      <DependentUpon>chat.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="P\chat.ascx.designer.cs">
+      <DependentUpon>chat.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="P\comunidades.aspx.cs">
+      <DependentUpon>comunidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="P\comunidades.aspx.designer.cs">
+      <DependentUpon>comunidades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="P\depoimentos.aspx.cs">
+      <DependentUpon>depoimentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="P\depoimentos.aspx.designer.cs">
+      <DependentUpon>depoimentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="P\editperfil.aspx.cs">
+      <DependentUpon>editperfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="P\editperfil.aspx.designer.cs">
+      <DependentUpon>editperfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="P\inicio.aspx.cs">
+      <DependentUpon>inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="P\inicio.aspx.designer.cs">
+      <DependentUpon>inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="P\perfil.aspx.cs">
+      <DependentUpon>perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="P\perfil.aspx.designer.cs">
+      <DependentUpon>perfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="P\recados.aspx.cs">
+      <DependentUpon>recados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="P\recados.aspx.designer.cs">
+      <DependentUpon>recados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="P\videos.aspx.cs">
+      <DependentUpon>videos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="P\videos.aspx.designer.cs">
+      <DependentUpon>videos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SitePrincipal.Master.cs">
+      <DependentUpon>SitePrincipal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SitePrincipal.Master.designer.cs">
+      <DependentUpon>SitePrincipal.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="Validacao\CmmValidacao.cs" />
+    <Compile Include="Validacao\PerfilValidacao.cs" />
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebServices\ComunidadeWebService.asmx.cs">
+      <DependentUpon>ComunidadeWebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\UsuarioWebService.asmx.cs">
+      <DependentUpon>UsuarioWebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="img\cmm\1d0052f7-460a-4b5f-9270-46357f6af1a2\" />
+    <Folder Include="img\cmm\57f65bde-2ae3-4530-a6e0-0da866a73937\" />
+    <Folder Include="img\cmm\6ae611f5-277b-4362-b2f4-06417fdd17e7\" />
+    <Folder Include="img\cmm\e22c12c8-5e02-48a6-af15-94323f3bb2cc\" />
+    <Folder Include="img\cmm\f310e217-dcb9-4497-9a65-f984bed10de5\" />
+    <Folder Include="img\perfil\248be048-ca4d-4891-b0f0-ea473511d037\" />
+    <Folder Include="img\perfil\5250DCD9-7363-4991-9E0D-A898623C3467\cmmtmp\" />
+    <Folder Include="img\perfil\6593ee94-0d84-4008-84ff-a0873413ff27\" />
+    <Folder Include="img\perfil\9b54e1a4-c804-41bb-b93a-6904f2e6b28f\" />
+    <Folder Include="img\perfil\acd281bb-70c3-479b-8025-ff41e6026e7b\" />
+    <Folder Include="img\perfil\cbdfeb81-414b-4d06-a670-55f5d996b0bc\" />
+    <Folder Include="img\perfil\f64ad559-362b-4e37-ba30-24b065ded71f\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Posy.V2.Domain\Posy.V2.Domain.csproj">
+      <Project>{2afd4c62-a4c1-46d9-bf7b-d372d11cf3ec}</Project>
+      <Name>Posy.V2.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Posy.V2.Infra.CrossCutting.Common\Posy.V2.Infra.CrossCutting.Common.csproj">
+      <Project>{020b662b-e18b-4350-a44f-62e7a8c2578e}</Project>
+      <Name>Posy.V2.Infra.CrossCutting.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Posy.V2.Infra.CrossCutting.Identity\Posy.V2.Infra.CrossCutting.Identity.csproj">
+      <Project>{11d4fd0f-521b-4323-9190-f189044084a1}</Project>
+      <Name>Posy.V2.Infra.CrossCutting.Identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Posy.V2.Infra.CrossCutting.IoC\Posy.V2.Infra.CrossCutting.IoC.csproj">
+      <Project>{1a45c873-d638-4716-b85e-6ebc3d21b4c4}</Project>
+      <Name>Posy.V2.Infra.CrossCutting.IoC</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62868</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:62868/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

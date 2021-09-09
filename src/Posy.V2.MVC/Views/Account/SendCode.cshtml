@@ -1,0 +1,29 @@
+﻿@model Posy.V2.Infra.CrossCutting.Identity.Model.SendCodeViewModel
+@{
+    Layout = "~/Views/Shared/_Account.cshtml";
+    ViewBag.Title = "Enviar código de verificação";
+}
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("SendCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @*@Html.Hidden("rememberMe", @Model.RememberMe)*@
+    <hr />
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label class="control-label">Provedor de Two Factor Authentication:</label>
+                @Html.DropDownListFor(model => model.SelectedProvider, Model.Providers, new { @class = "form-control" })
+                @Html.HiddenFor(m => m.UserId)
+            </div>            
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Enviar" class="btn btn-primary btn-lg btn-block" />
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

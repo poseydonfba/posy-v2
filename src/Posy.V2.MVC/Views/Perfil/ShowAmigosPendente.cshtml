@@ -1,0 +1,146 @@
+﻿@{
+    Layout = "~/Views/Shared/_PrincipalPerfil.cshtml";
+    ViewBag.Title = "ShowAmigosPendente";
+}
+
+<div class="ms-cnt-blc ms-cnt-amigospend">
+    <div class="view-titulo">
+        <div class='ms-cnt-tit-blc'>
+            <h1 class='ms-tit-blc-txt icon-people'>@Posy.V2.Infra.CrossCutting.Common.Resources.UIConfig.AmigosPendentes</h1>
+            <div class='ms-tit-blc-line'></div>
+        </div>
+    </div>
+    <div class="view-pager vp1"></div>
+    <div class="view-page"></div>
+    <div class="view-pager vp2"></div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var TOTAL_ITEM_BLOCO = 6;
+
+            fnView();
+
+            $(document).on("click", ".tooltip-dropmenu", function () {
+                $(this).tipsy("show");
+            });
+
+            $(document).on("click", ".btnMenuItem", function () {
+
+                if ($(this).attr("opcao") == "AA")
+                    fnAceitarAmigo($(this));
+
+                else if ($(this).attr("opcao") == "AR")
+                    fnRecusarAmigo($(this));
+            });
+
+            function fnAceitarAmigo(objBtn) {
+
+                var objContainerLoading = $(".tooltip-dropmenu-container[cppend=" + objBtn.attr("cppend") + "]");
+
+                objContainerLoading.buttonLoader('start');
+
+                var model = new Object();
+                model.UsuarioIdAceitar = objBtn.attr("cppend");
+
+                $.post("/ajax/amigo/aceitar", { model: model }, function (response) {
+
+                    $("li[cppend=" + objBtn.attr("cppend") + "]").fadeOut(300, function () {
+                        $(this).remove();
+                    });
+
+                    var objSpanCntAmigo = $(fnGetIDMenuVertical()).find("a[item=amigo] span"),
+                        totalAmiPend = parseInt(objSpanCntAmigo.text()),
+                        objTitleCntAmigo = $(".ms-tit-blc-btn"),
+                        totalAmigos = (objTitleCntAmigo.text() === undefined || objTitleCntAmigo.text() == "") ? 0 : parseInt(objTitleCntAmigo.text());
+
+                    if ((totalAmiPend - 1) == 0) {
+                        objSpanCntAmigo.fadeOut(300, function () {
+                            $(this).remove();
+                        });
+                    } else {
+                        objSpanCntAmigo.text((totalAmiPend - 1));
+                    }
+
+                    if ((totalAmigos - 1) == 0)
+                        objTitleCntAmigo.text("0");
+                    else
+                        objTitleCntAmigo.text((totalAmigos - 1));
+
+                    $(response[0]).hide().prependTo("#containerAmigosAdicionados ul").fadeIn("slow");
+
+                    if ($(fnGetIDContainerAmigos() + " .gl-cnt-zoom .gl-zoom").length == TOTAL_ITEM_BLOCO) {
+                        $(fnGetIDContainerAmigos() + " .gl-cnt-zoom .gl-zoom:last").remove();
+                    }
+                    $(response[1]).hide().prependTo(fnGetIDContainerAmigos() + " .gl-cnt-zoom").fadeIn("slow");
+
+                    $(".tooltip-dropmenu").tipsy({
+                        trigger: 'click',
+                        gravity: 'n',
+                        html: true,
+                        title: function () {
+                            return $(this).find(".tooltip-dropmenu-html-container").html();
+                        }
+                    });
+
+                    $(".tooltip2").tipsy({ gravity: 's' });
+
+                }).always(function () {
+                    objContainerLoading.buttonLoader('stop');
+                });
+            }
+
+            function fnRecusarAmigo(objBtn) {
+
+                var objContainerLoading = $(".tooltip-dropmenu-container[cppend=" + objBtn.attr("cppend") + "]");
+                objContainerLoading.buttonLoader('start');
+
+                var model = new Object();
+                model.UsuarioIdRecusar = objBtn.attr("cppend");
+
+                $.post("/ajax/amigo/recusar", { model: model }, function (response) {
+
+                    $("li[cppend=" + objBtn.attr("cppend") + "]").fadeOut(300, function () {
+                        $(this).remove();
+                    });
+
+                    var objSpanCntAmigo = $(fnGetIDMenuVertical()).find("a[item=amigo] span"),
+                        totalAmiPend = parseInt(objSpanCntAmigo.text()),
+                        objTitleCntAmigo = $(".ms-tit-blc-btn"),
+                        totalAmigos = (objTitleCntAmigo.text() === undefined || objTitleCntAmigo.text() == "") ? 0 : parseInt(objTitleCntAmigo.text());
+
+                    if ((totalAmiPend - 1) == 0) {
+                        objSpanCntAmigo.fadeOut(300, function () {
+                            $(this).remove();
+                        });
+                    } else {
+                        objSpanCntAmigo.text((totalAmiPend - 1));
+                    }
+
+                    if ((totalAmigos - 1) == 0)
+                        objTitleCntAmigo.text("0");
+                    else
+                        objTitleCntAmigo.text((totalAmigos - 1));
+
+                }).always(function () {
+                    objContainerLoading.buttonLoader('stop');
+                });
+            }
+
+            function fnView() {
+                var objLoader = $(".mv-loading").boxLoader();
+
+                $.get("/ajax/amigo/pendente/template/view", function (data) {
+                    fnShowViewPerfilData(data);
+                    fnInicializaViewPerfil();
+                }).always(function () {
+                    objLoader.stop();
+                });
+            }
+        });
+
+    </script>
+}

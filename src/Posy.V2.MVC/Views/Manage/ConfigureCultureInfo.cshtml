@@ -1,0 +1,50 @@
+﻿@model Posy.V2.Infra.CrossCutting.Identity.Model.ConfigureCultureInfoViewModel
+@*https://www.jerriepelser.com/blog/allowing-user-to-set-culture-settings-aspnet5-part2/*@
+@{
+    Layout = "~/Views/Shared/_Account.cshtml";
+    ViewBag.Title = "ConfigureCultureInfo";
+}
+
+<h2>Configurações de Cultura</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @*<h4 class="font-weight-light">ConfigureCultureInfoViewModel</h4>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.CurrencySymbol, htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownListFor(model => model.CurrencySymbol, new SelectList(Model.AvailableCurrencySymbols, "Value", "Text"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CurrencySymbol, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownListFor(model => model.Language, new SelectList(Model.AvailableLanguages, "Value", "Text"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LongDateFormat, htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownListFor(model => model.LongDateFormat, new SelectList(Model.AvailableLongDateFormats, "Value", "Text"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.LongDateFormat, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShortDateFormat, htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownListFor(model => model.ShortDateFormat, new SelectList(Model.AvailableShortDateFormats, "Value", "Text"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ShortDateFormat, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary btn-lg btn-block" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

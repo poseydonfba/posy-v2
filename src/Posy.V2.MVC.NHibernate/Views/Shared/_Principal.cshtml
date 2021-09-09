@@ -1,0 +1,99 @@
+﻿@using Posy.V2.Infra.CrossCutting.Common.Resources
+@using Posy.V2.MVC.Helpers
+@using Posy.V2.Domain.Entities
+@using Posy.V2.MVC.Controllers
+@{Perfil PerfilLogged = BaseControllerPerfil.PerfilLogged; }
+@{Perfil PerfilView = BaseControllerPerfil.PerfilView; }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - POSY</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=7; IE=8; IE=9; IE=10; IE=11" />
+    <meta http-equiv="content-language" content="pt-br, en-US, fr" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Poseydon Espilacopa" />
+    <meta name="description" content="Rede Social Poseydonrs" />
+    <meta name="keywords" content="sites, web, desenvolvimento" />
+    <meta name="reply-to" content="poseydonfba@hotmail.com" />
+    <meta name="copyright" content="© 2015 Poseydon" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <link rel="shortcut icon" href="~/Images/favicon.ico" type="image/x-icon" />
+    @Styles.Render("~/Content/principal/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Scripts/plugin/stories/zuck.css" rel="stylesheet" />
+    <link href="~/Scripts/plugin/stories/skins/snapgram.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="containerGlobal">
+
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="mn-cnt-horiz">
+                    <ul class="mn-horiz">
+                        <li>@Html.ActionLink(@UIConfig.Sair, "SignOut", "Account", null, new { @class = "sairIcon" })</li>
+                        @*<li><a href="javascript:document.getElementById('logoutForm').submit()" class="sairIcon">@UIConfig.Sair</a></li>*@
+                        <li><a href="~/Manage" class="configIcon">@UIConfig.Configuracoes</a></li>
+                        <li><a href="javascript:void(0);" class="peopleIcon">@UIConfig.Pessoas</a></li>
+                        <li class="mv-loading"><a href="javascript:void(0);" class="homeIcon">ψ</a></li>
+                        <li id="liPesqCmm"><a href="~/@FuncaoSite.ROUTE_URL_CMM/diretorio" class="cmmIcon">@UIConfig.Comunidades</a></li>
+                        <li id="liPerfil"><a href="@FuncaoSite.getUrlNomeIdPerfil(@PerfilLogged.Alias)" class="perfilIcon">@UIConfig.Perfil</a></li>
+                        <li id="liInicio"><a href="@FuncaoSite.ROUTE_URL_INICIO" class="inicioIcon">@UIConfig.Inicio</a></li>
+                    </ul>
+                </div>
+
+            }
+        }
+    </div>
+
+    @RenderBody()
+
+    @Html.Partial("_ChatPartial")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/principal")
+    @*@Scripts.Render("~/bundles/zuck")*@
+    <script src="~/Scripts/plugin/stories/zuck.js"></script>
+    <script src="~/Scripts/principal/stories.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script type="text/javascript">
+
+        function gettoken() {
+            var token = '@Html.AntiForgeryToken()';
+            token = $(token).val();
+            return token;
+        }
+
+        $(function () {
+
+            var token = gettoken();//$('input[name="__RequestVerificationToken"]').val();
+            $.ajaxPrefilter(function (options, originalOptions) {
+                // ESTA DANDO ERRO QUANDO É UPLOAD
+                if (options.type.toUpperCase() == "POST" && options.url !== "/ajax/perfil/upload/foto" && options.url !== "/ajax/comunidade/upload/foto") {
+                    options.data = $.param($.extend(originalOptions.data, { __RequestVerificationToken: token }));
+                }
+            });
+            //$.ajaxSetup({
+            //    beforeSend: function (jqXHR, settings) {
+            //        if (settings.type.toUpperCase() == "POST")
+            //            jqXHR.setRequestHeader("__RequestVerificationToken", token);
+            //    }
+            //});
+
+            // http://leafo.net/sticky-kit/
+            $(".sidebar").stick_in_parent({
+                offset_top: 50
+            });
+
+        });
+
+
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

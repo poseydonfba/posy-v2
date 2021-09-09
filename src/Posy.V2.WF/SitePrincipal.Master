@@ -1,0 +1,134 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SitePrincipal.master.cs" Inherits="Posy.V2.WF.SitePrincipal" %>
+
+<%@ Import Namespace="Posy.V2.WF.Helpers" %>
+<%@ Import Namespace="Posy.V2.Infra.CrossCutting.Common" %>
+<%@ Import Namespace="Posy.V2.Infra.CrossCutting.Common.Resources" %>
+
+<%@ Register Src="~/p/chat.ascx" TagPrefix="uc1" TagName="chat" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>poseydonrs</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=7; IE=8; IE=9; IE=10; IE=11" />
+    <%--Utilizado para declarar as linguagens utilizadas no conteúdo da página. Esse atributo é útil para categorizar a página conforme o idioma.--%>
+    <meta http-equiv="content-language" content="pt-br, en-US, fr" />
+    <%--Esta tag é uma das mais importantes e jamais deve ser esquecida pois ela define qual o tipo de conteúdo que a página contém e qual a codificação 
+    deste conteúdo. Assim fica fácil saber se iremos abrir uma página HTML ou um arquivo PDF--%>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <%--Serve para identificar qual o nome do autor da página--%>
+    <meta name="author" content="Poseydon Espilacopa" />
+    <%--Contém uma descrição/resumo sobre a página, utilizada por alguns mecanismos de busca--%>
+    <meta name="description" content="Rede Social Poseydonrs" />
+    <%--As palavras-chaves são utilizadas para ajudar na indexação da sua página pelos motores de busca, funcionam como uma categorização do conteúdo--%>
+    <meta name="keywords" content="sites, web, desenvolvimento" />
+    <meta name="reply-to" content="poseydonfba@hotmail.com" />
+    <%--Como o próprio nome já sugere, este serve para declarar os direitos autorais da página em questão--%>
+    <meta name="copyright" content="© 2015 Poseydon" />
+    <%--Elimina no I.E (Internet Explorer) a barra de opções que aparece ao passar o mouse por cima de uma imagem--%>
+    <meta http-equiv="imagetoolbar" content="no" />
+
+    <link rel="shortcut icon" href="<%= Funcao.ResolveServerUrl("~/img/favicon.ico", false) %>" type="image/x-icon" />
+
+    <%: Styles.Render("~/bundles/css") %>
+
+    <script type="text/javascript">
+
+        var defaults = {
+            SiteRootUrl: '<%=ConfigurationManager.AppSettings["siteRootUrl"] %>'
+        };
+
+    </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+      <div id="containerGlobal">
+
+            <div class="mn-cnt-horiz">
+                <ul class="mn-horiz">
+                    <li><a href="javascript:void(0);" id="usuOnLine" runat="server">-</a></li>
+                    <li><asp:LinkButton runat="server" OnClick="Unnamed_LoggingOut" CssClass="sairIcon" ><%= UIConfig.Sair %></asp:LinkButton></li>
+                    <%--<li><a href="<%= Funcao.ResolveServerUrl("~/" + FuncaoSite.ROUTE_URL_LOGOUT, false) %>" class="sairIcon"><%= UIConfig.Sair %></a></li>--%>
+                    <li><a href="javascript:void(0);" class="configIcon"><%= UIConfig.Configuracoes %></a></li>
+                    <li><a href="javascript:void(0);" class="peopleIcon"><%= UIConfig.Pessoas %></a></li>
+                    <li class="mv-loading"><a href="javascript:void(0);" class="homeIcon">ψ</a></li>
+                    <li id="liPesqCmm"><a href="<%= Funcao.ResolveServerUrl("~/" + FuncaoSite.ROUTE_URL_PESQUISARCMM, false) %>" class="cmmIcon"><%= UIConfig.Comunidades %></a></li>
+                    <li id="liPerfil"><a href="javascript:void(0);" class="perfilIcon"><%= UIConfig.Perfil %></a></li>
+                    <li id="liInicio"><a href="<%= Funcao.ResolveServerUrl("~/" + FuncaoSite.ROUTE_URL_INICIO, false) %>" class="inicioIcon"><%= UIConfig.Inicio %></a></li>
+                    <!--li class="homeIcon-li"><a href="#home" class="homeIcon">ψ</a></li-->
+                </ul>
+            </div>
+
+            <div class="ms-cnt-glb">
+
+                <div class="ms-cnt-col01">
+                    <div class="ms-cnt-blc-vazio ms-cnt-blc-perfil">
+                        <div class="pf-cnt-foto">
+                            <div class="pf-foto-effect">
+                                <img id="fotoPerfil" src="<%= Funcao.ResolveServerUrl("~/img/perfil/0.jpg", false) %>" alt="img0" />
+                                <div>
+                                    <h2>
+                                        <asp:Label ID="lblNome" CssClass="lblNome" runat="server"></asp:Label><span>&nbsp;&nbsp;<asp:Label ID="lblSobrenome" CssClass="lblSobrenome" runat="server"></asp:Label></span></h2>
+                                    <p>
+                                        <asp:Label ID="lblFrase" CssClass="lblFrase" runat="server"></asp:Label>
+                                    </p>
+                                    <!--a href="#">View more</a-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mn-cnt-vert"></div>
+                </div>
+
+                <div class="ms-cnt-col02">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <div class="ms-cnt-rdp">
+                        <h1>POSEYDON ESPILACOPA<br />
+                            <p>REDE SOCIAL</p>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="ms-cnt-col03">
+                    <%--<div class="ms-cnt-blc-vazio ms-cnt-blc-video">
+                    <iframe src="https://www.youtube-nocookie.com/embed/Owg-NaUoHHo?autoplay=0&showinfo=0&controls=0&wmode=transparent" 
+                            frameborder="0" height="160" width="100%"></iframe>
+                    </div>--%>
+
+                    <div class="ms-cnt-blc-vazio ms-cnt-blc-vis-recente">
+                        <div id="containerVisitante" class="resizeBloco2"></div>
+                    </div>
+
+                    <div class="ms-cnt-blc-vazio ms-cnt-blc-amigos">
+                        <div id="containerAmigos" class="resizeBloco1"></div>
+                    </div>
+
+                    <div class="ms-cnt-blc-vazio ms-cnt-blc-cmm">
+                        <div id="containerCmm" class="resizeBloco1"></div>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+
+        </div>
+    </form>
+
+    <%: Scripts.Render("~/bundles/scripts") %>
+    <script src="/js/jquery.signalR-2.2.1.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    <!--[if IE]>
+    <script src="<%= Funcao.ResolveServerUrl("~/js/plugin/html5.js", false) %>"></script>
+	<![endif]-->
+    <asp:ContentPlaceHolder ID="cntJs" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <uc1:chat runat="server" ID="chat" />
+</body>
+</html>

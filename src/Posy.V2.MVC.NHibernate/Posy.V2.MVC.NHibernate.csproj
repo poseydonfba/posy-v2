@@ -1,0 +1,882 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1C791BAE-DF5E-4346-9913-43B99EC2596B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Posy.V2.MVC.NHibernate</RootNamespace>
+    <AssemblyName>Posy.V2.MVC.NHibernate</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44308</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Antlr3.Runtime.3.5.1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Iesi.Collections.4.0.4\lib\net461\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=5.2.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NHibernate.5.2.3\lib\net461\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.AspNet.Identity, Version=5.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NHibernate.AspNet.Identity.5.0.2\lib\net461\NHibernate.AspNet.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq.EagerFetching, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Remotion.Linq.EagerFetching.2.2.0\lib\net45\Remotion.Linq.EagerFetching.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=4.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SimpleInjector.4.0.0\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Extensions.ExecutionContextScoping, Version=4.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SimpleInjector.Extensions.ExecutionContextScoping.4.0.0\lib\net45\SimpleInjector.Extensions.ExecutionContextScoping.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SimpleInjector.Integration.Web.4.0.0\lib\net40\SimpleInjector.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SimpleInjector.Integration.Web.Mvc.4.0.0\lib\net40\SimpleInjector.Integration.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator, Version=1.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Attributes\AntiForgeryToken\CustomValidateAntiForgeryTokenAttribute.cs" />
+    <Compile Include="Attributes\AntiForgeryToken\ExcludeFromAntiForgeryValidationAttribute.cs" />
+    <Compile Include="Attributes\AntiForgeryToken\ValidateAntiForgeryTokenWrapperAttribute.cs" />
+    <Compile Include="Attributes\DeflateCompressionAttribute.cs" />
+    <Compile Include="Attributes\ExceptionHandlerAttribute.cs" />
+    <Compile Include="Attributes\UserCurrentAttribute.cs" />
+    <Compile Include="Attributes\ValidationContainer.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AmigoController.cs" />
+    <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\Base\BaseControllerComunidade.cs" />
+    <Compile Include="Controllers\Base\BaseControllerPerfil.cs" />
+    <Compile Include="Controllers\Base\GlobalBaseController.cs" />
+    <Compile Include="Controllers\Base\IGlobalBaseController.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Controllers\ComunidadeController.cs" />
+    <Compile Include="Controllers\DepoimentoController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\ForumController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InicioController.cs" />
+    <Compile Include="Controllers\MembroController.cs" />
+    <Compile Include="Controllers\ModeradorController.cs" />
+    <Compile Include="Controllers\PerfilController.cs" />
+    <Compile Include="Controllers\RecadoController.cs" />
+    <Compile Include="Controllers\StorieController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Controllers\VisitanteController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CompressionHelper.cs" />
+    <Compile Include="Helpers\CultureHelper.cs" />
+    <Compile Include="Helpers\FuncaoSite.cs" />
+    <Compile Include="Hub\ChatService.cs" />
+    <Compile Include="Hub\IChatService.cs" />
+    <Compile Include="Models\AceitarMembroModel.cs" />
+    <Compile Include="Models\AceitarRecusarDepoimentoModel.cs" />
+    <Compile Include="Models\AceitarSolicitacaoAmizadeModel.cs" />
+    <Compile Include="Models\AdicionarAmigoModel.cs" />
+    <Compile Include="Models\AdicionarModeradorModel.cs" />
+    <Compile Include="Models\BloquearPerfilModel.cs" />
+    <Compile Include="Models\ChatResponsePerfilModel.cs" />
+    <Compile Include="Models\ComentarioPerfilModel.cs" />
+    <Compile Include="Models\CriarComunidadeModel.cs" />
+    <Compile Include="Models\EditarPerfilComunidadeModel.cs" />
+    <Compile Include="Models\EditarPerfilModel.cs" />
+    <Compile Include="Models\EditarPrivacidadeComunidadeModel.cs" />
+    <Compile Include="Models\ExcluirAmigoModel.cs" />
+    <Compile Include="Models\ExcluirComentarioPerfilModel.cs" />
+    <Compile Include="Models\ExcluirDepoimentoModel.cs" />
+    <Compile Include="Models\ExcluirModeradorModel.cs" />
+    <Compile Include="Models\ExcluirPostPerfilModel.cs" />
+    <Compile Include="Models\ExcluirRecadoComentarioModel.cs" />
+    <Compile Include="Models\ExcluirRecadoModel.cs" />
+    <Compile Include="Models\ExcluirTopicoPostModel.cs" />
+    <Compile Include="Models\ExcluirVideoComentarioModel.cs" />
+    <Compile Include="Models\ExcluirVideoModel.cs" />
+    <Compile Include="Models\HtmlSelect.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\LoginTokenResult.cs" />
+    <Compile Include="Models\OcultarPostPerfilModel.cs" />
+    <Compile Include="Models\PostPerfilModel.cs" />
+    <Compile Include="Models\RecusarMembroModel.cs" />
+    <Compile Include="Models\RegistrarUsuarioModel.cs" />
+    <Compile Include="Models\SalvarDepoimentoModel.cs" />
+    <Compile Include="Models\SalvarFotoPerfilModel.cs" />
+    <Compile Include="Models\SalvarPrivacidadeComunidadeModel.cs" />
+    <Compile Include="Models\SalvarPrivacidadePerfilModel.cs" />
+    <Compile Include="Models\SalvarRecadoComentarioModel.cs" />
+    <Compile Include="Models\SalvarRecadoModel.cs" />
+    <Compile Include="Models\SalvarTopicoModel.cs" />
+    <Compile Include="Models\SalvarTopicoPostModel.cs" />
+    <Compile Include="Models\SalvarVideoComentarioModel.cs" />
+    <Compile Include="Models\SalvarVideoModel.cs" />
+    <Compile Include="Models\StoriesModel.cs" />
+    <Compile Include="Models\TwitterDto.cs" />
+    <Compile Include="Models\UsuarioIdRecusarModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validacao\CmmValidacao.cs" />
+    <Compile Include="Validacao\PerfilValidacao.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\cssgram.min.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\principal\ac.account.css" />
+    <Content Include="Content\principal\bt.buttons.css" />
+    <Content Include="Content\principal\ch.chat.css" />
+    <Content Include="Content\principal\ed.editor.css" />
+    <Content Include="Content\principal\fm.form.css" />
+    <Content Include="Content\principal\font-awesome.css" />
+    <Content Include="Content\principal\ft.fotocrop.css" />
+    <Content Include="Content\principal\gl.galeria.css" />
+    <Content Include="Content\principal\gr.grid.css" />
+    <Content Include="Content\principal\ld.loader.css" />
+    <Content Include="Content\principal\ls.lista.css" />
+    <Content Include="Content\principal\mn.menu.css" />
+    <Content Include="Content\principal\ms.master.css" />
+    <Content Include="Content\principal\nt.notificacao.css" />
+    <Content Include="Content\principal\nt.notificacao.min.css" />
+    <Content Include="Content\principal\pf.perfil.css" />
+    <Content Include="Content\principal\pg.paginacao.css" />
+    <Content Include="Content\principal\reset.css" />
+    <Content Include="Content\principal\sc.social.css" />
+    <Content Include="Content\principal\st.sticky.css" />
+    <Content Include="Content\principal\tl.timeline.css" />
+    <Content Include="Content\principal\tt.tooltip.css" />
+    <Content Include="Content\principal\vd.video.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Images\bg.jpg" />
+    <Content Include="Images\bg1.jpg" />
+    <Content Include="Images\bg3.jpg" />
+    <Content Include="Images\cd-icon-location.svg" />
+    <Content Include="Images\cmm\0.jpg" />
+    <Content Include="Images\cmm\0b92516d-539c-451c-974b-3a22ac8deffb\1.jpg" />
+    <Content Include="Images\cmm\0d31ef57-1da3-42b5-b238-99e6653fb106\1.jpg" />
+    <Content Include="Images\cmm\1d0052f7-460a-4b5f-9270-46357f6af1a2\1.jpg" />
+    <Content Include="Images\cmm\1\1.jpg" />
+    <Content Include="Images\cmm\2\1.jpg" />
+    <Content Include="Images\cmm\3df10c0c-834c-4d0d-91e2-1bee31b57c86\1.jpg" />
+    <Content Include="Images\cmm\3\1.jpg" />
+    <Content Include="Images\cmm\4\1.jpg" />
+    <Content Include="Images\cmm\57f65bde-2ae3-4530-a6e0-0da866a73937\1.jpg" />
+    <Content Include="Images\cmm\5\1.jpg" />
+    <Content Include="Images\cmm\6ae611f5-277b-4362-b2f4-06417fdd17e7\1.jpg" />
+    <Content Include="Images\cmm\6ee9e3ce-b7d4-41af-83e4-1e16fff55e96\1.jpg" />
+    <Content Include="Images\cmm\75fe77bb-95e5-496c-8e6f-18e7caa7a7e3\1.jpg" />
+    <Content Include="Images\cmm\e22c12c8-5e02-48a6-af15-94323f3bb2cc\1.jpg" />
+    <Content Include="Images\cmm\f310e217-dcb9-4497-9a65-f984bed10de5\1.jpg" />
+    <Content Include="Images\cmm\old\1\1.jpg" />
+    <Content Include="Images\cmm\old\2\1.jpg" />
+    <Content Include="Images\cmm\old\3\1.jpg" />
+    <Content Include="Images\cmm\old\4\1.jpg" />
+    <Content Include="Images\cmm\old\5\1.jpg" />
+    <Content Include="Images\edthtml\font-italic.png" />
+    <Content Include="Images\edthtml\font-underline.png" />
+    <Content Include="Images\edthtml\fore-color.png" />
+    <Content Include="Images\edthtml\fore-color2.png" />
+    <Content Include="Images\edthtml\html.png" />
+    <Content Include="Images\edthtml\smile.png" />
+    <Content Include="Images\edthtml\text-bold.png" />
+    <Content Include="Images\emojis\5WUpcPZ.png" />
+    <Content Include="Images\emojis\ftowh0s.png" />
+    <Content Include="Images\emojis\G4EjwqQ.jpg" />
+    <Content Include="Images\emojis\gR9juts.png" />
+    <Content Include="Images\emojis\H5Jba8r.png" />
+    <Content Include="Images\emojis\jfTyB5F.png" />
+    <Content Include="Images\emojis\MllSy5N.png" />
+    <Content Include="Images\emojis\qKia58V.png" />
+    <Content Include="Images\emojis\tOLNJgg.png" />
+    <Content Include="Images\emojis\UjZLf1R.png" />
+    <Content Include="Images\emojis\uSpaYy8.png" />
+    <Content Include="Images\emojis\UUrRRo6.png" />
+    <Content Include="Images\emojis\VAn5Geq.png" />
+    <Content Include="Images\emojis\voEvJld.png" />
+    <Content Include="Images\emojis\VSQxJKL.png" />
+    <Content Include="Images\emoticon\act-up.png" />
+    <Content Include="Images\emoticon\airplane.png" />
+    <Content Include="Images\emoticon\alien.png" />
+    <Content Include="Images\emoticon\angel.png" />
+    <Content Include="Images\emoticon\angry.png" />
+    <Content Include="Images\emoticon\arrogant.png" />
+    <Content Include="Images\emoticon\bad.png" />
+    <Content Include="Images\emoticon\bashful.png" />
+    <Content Include="Images\emoticon\beat-up.png" />
+    <Content Include="Images\emoticon\beauty.png" />
+    <Content Include="Images\emoticon\beer.png" />
+    <Content Include="Images\emoticon\blowkiss.png" />
+    <Content Include="Images\emoticon\bomb.png" />
+    <Content Include="Images\emoticon\bowl.png" />
+    <Content Include="Images\emoticon\boy.png" />
+    <Content Include="Images\emoticon\brb.png" />
+    <Content Include="Images\emoticon\bye.png" />
+    <Content Include="Images\emoticon\cake.png" />
+    <Content Include="Images\emoticon\call-me.png" />
+    <Content Include="Images\emoticon\camera.png" />
+    <Content Include="Images\emoticon\can.png" />
+    <Content Include="Images\emoticon\car.png" />
+    <Content Include="Images\emoticon\cat.png" />
+    <Content Include="Images\emoticon\chicken.png" />
+    <Content Include="Images\emoticon\clap.png" />
+    <Content Include="Images\emoticon\clock.png" />
+    <Content Include="Images\emoticon\cloudy.png" />
+    <Content Include="Images\emoticon\clover.png" />
+    <Content Include="Images\emoticon\clown.png" />
+    <Content Include="Images\emoticon\coffee.png" />
+    <Content Include="Images\emoticon\coins.png" />
+    <Content Include="Images\emoticon\computer.png" />
+    <Content Include="Images\emoticon\confused.png" />
+    <Content Include="Images\emoticon\console.png" />
+    <Content Include="Images\emoticon\cow.png" />
+    <Content Include="Images\emoticon\cowboy.png" />
+    <Content Include="Images\emoticon\crying.png" />
+    <Content Include="Images\emoticon\curl-lip.png" />
+    <Content Include="Images\emoticon\curse.png" />
+    <Content Include="Images\emoticon\cute.png" />
+    <Content Include="Images\emoticon\dance.png" />
+    <Content Include="Images\emoticon\dazed.png" />
+    <Content Include="Images\emoticon\desire.png" />
+    <Content Include="Images\emoticon\devil.png" />
+    <Content Include="Images\emoticon\disapointed.png" />
+    <Content Include="Images\emoticon\disdain.png" />
+    <Content Include="Images\emoticon\doctor.png" />
+    <Content Include="Images\emoticon\dog.png" />
+    <Content Include="Images\emoticon\doh.png" />
+    <Content Include="Images\emoticon\dont-know.png" />
+    <Content Include="Images\emoticon\drink.png" />
+    <Content Include="Images\emoticon\drool.png" />
+    <Content Include="Images\emoticon\eat.png" />
+    <Content Include="Images\emoticon\embarrassed.png" />
+    <Content Include="Images\emoticon\excruciating.png" />
+    <Content Include="Images\emoticon\eyeroll.png" />
+    <Content Include="Images\emoticon\film.png" />
+    <Content Include="Images\emoticon\fingers-crossed.png" />
+    <Content Include="Images\emoticon\flag.png" />
+    <Content Include="Images\emoticon\foot-in-mouth.png" />
+    <Content Include="Images\emoticon\freaked-out.png" />
+    <Content Include="Images\emoticon\ghost.png" />
+    <Content Include="Images\emoticon\giggle.png" />
+    <Content Include="Images\emoticon\girl.png" />
+    <Content Include="Images\emoticon\glasses-cool.png" />
+    <Content Include="Images\emoticon\glasses-nerdy.png" />
+    <Content Include="Images\emoticon\go-away.png" />
+    <Content Include="Images\emoticon\goat.png" />
+    <Content Include="Images\emoticon\good.png" />
+    <Content Include="Images\emoticon\hammer.png" />
+    <Content Include="Images\emoticon\handcuffs.png" />
+    <Content Include="Images\emoticon\handshake.png" />
+    <Content Include="Images\emoticon\highfive.png" />
+    <Content Include="Images\emoticon\hug-left.png" />
+    <Content Include="Images\emoticon\hug-right.png" />
+    <Content Include="Images\emoticon\hungry.png" />
+    <Content Include="Images\emoticon\hypnotized.png" />
+    <Content Include="Images\emoticon\in-love.png" />
+    <Content Include="Images\emoticon\island.png" />
+    <Content Include="Images\emoticon\jump.png" />
+    <Content Include="Images\emoticon\kiss.png" />
+    <Content Include="Images\emoticon\knife.png" />
+    <Content Include="Images\emoticon\lamp.png" />
+    <Content Include="Images\emoticon\lashes.png" />
+    <Content Include="Images\emoticon\laugh.png" />
+    <Content Include="Images\emoticon\liquor.png" />
+    <Content Include="Images\emoticon\love-over.png" />
+    <Content Include="Images\emoticon\love.png" />
+    <Content Include="Images\emoticon\lying.png" />
+    <Content Include="Images\emoticon\mad-tongue.png" />
+    <Content Include="Images\emoticon\mail.png" />
+    <Content Include="Images\emoticon\mean.png" />
+    <Content Include="Images\emoticon\meeting.png" />
+    <Content Include="Images\emoticon\mobile.png" />
+    <Content Include="Images\emoticon\moneymouth.png" />
+    <Content Include="Images\emoticon\monkey.png" />
+    <Content Include="Images\emoticon\moon.png" />
+    <Content Include="Images\emoticon\msn-away.png" />
+    <Content Include="Images\emoticon\msn-busy.png" />
+    <Content Include="Images\emoticon\msn.png" />
+    <Content Include="Images\emoticon\msn_online.png" />
+    <Content Include="Images\emoticon\musical-note.png" />
+    <Content Include="Images\emoticon\nailbiting.png" />
+    <Content Include="Images\emoticon\neutral.png" />
+    <Content Include="Images\emoticon\party.png" />
+    <Content Include="Images\emoticon\peace.png" />
+    <Content Include="Images\emoticon\phone.png" />
+    <Content Include="Images\emoticon\pig.png" />
+    <Content Include="Images\emoticon\pill.png" />
+    <Content Include="Images\emoticon\pissed-off.png" />
+    <Content Include="Images\emoticon\pizza.png" />
+    <Content Include="Images\emoticon\plate.png" />
+    <Content Include="Images\emoticon\poop.png" />
+    <Content Include="Images\emoticon\pray.png" />
+    <Content Include="Images\emoticon\present.png" />
+    <Content Include="Images\emoticon\pumpkin.png" />
+    <Content Include="Images\emoticon\qq.png" />
+    <Content Include="Images\emoticon\question.png" />
+    <Content Include="Images\emoticon\quiet.png" />
+    <Content Include="Images\emoticon\rain.png" />
+    <Content Include="Images\emoticon\rainbow.png" />
+    <Content Include="Images\emoticon\rose-dead.png" />
+    <Content Include="Images\emoticon\rose.png" />
+    <Content Include="Images\emoticon\rotfl.png" />
+    <Content Include="Images\emoticon\sad.png" />
+    <Content Include="Images\emoticon\sarcastic.png" />
+    <Content Include="Images\emoticon\search.png" />
+    <Content Include="Images\emoticon\secret.png" />
+    <Content Include="Images\emoticon\shame.png" />
+    <Content Include="Images\emoticon\sheep.png" />
+    <Content Include="Images\emoticon\shock.png" />
+    <Content Include="Images\emoticon\shout.png" />
+    <Content Include="Images\emoticon\shut-mouth.png" />
+    <Content Include="Images\emoticon\sick.png" />
+    <Content Include="Images\emoticon\sigarette.png" />
+    <Content Include="Images\emoticon\silly.png" />
+    <Content Include="Images\emoticon\skeleton.png" />
+    <Content Include="Images\emoticon\skywalker.png" />
+    <Content Include="Images\emoticon\sleepy.png" />
+    <Content Include="Images\emoticon\smile-big.png" />
+    <Content Include="Images\emoticon\smile.png" />
+    <Content Include="Images\emoticon\smirk.png" />
+    <Content Include="Images\emoticon\snail.png" />
+    <Content Include="Images\emoticon\snicker.png" />
+    <Content Include="Images\emoticon\snowman.png" />
+    <Content Include="Images\emoticon\soccerball.png" />
+    <Content Include="Images\emoticon\soldier.png" />
+    <Content Include="Images\emoticon\star.png" />
+    <Content Include="Images\emoticon\starving.png" />
+    <Content Include="Images\emoticon\struggle.png" />
+    <Content Include="Images\emoticon\sun.png" />
+    <Content Include="Images\emoticon\sweat.png" />
+    <Content Include="Images\emoticon\teeth.png" />
+    <Content Include="Images\emoticon\terror.png" />
+    <Content Include="Images\emoticon\thinking.png" />
+    <Content Include="Images\emoticon\thunder.png" />
+    <Content Include="Images\emoticon\tongue.png" />
+    <Content Include="Images\emoticon\tremble.png" />
+    <Content Include="Images\emoticon\turtle.png" />
+    <Content Include="Images\emoticon\tv.png" />
+    <Content Include="Images\emoticon\umbrella.png" />
+    <Content Include="Images\emoticon\vampire.png" />
+    <Content Include="Images\emoticon\victory.png" />
+    <Content Include="Images\emoticon\waiting.png" />
+    <Content Include="Images\emoticon\watermelon.png" />
+    <Content Include="Images\emoticon\weep.png" />
+    <Content Include="Images\emoticon\wilt.png" />
+    <Content Include="Images\emoticon\wink.png" />
+    <Content Include="Images\emoticon\worship.png" />
+    <Content Include="Images\emoticon\yawn.png" />
+    <Content Include="Images\emoticon\yin-yang.png" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\favicon.png" />
+    <Content Include="Images\gh-icons.png" />
+    <Content Include="Images\gridme.png" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\mh-cmm.png" />
+    <Content Include="Images\mh-cmm1.png" />
+    <Content Include="Images\mh-config.png" />
+    <Content Include="Images\mh-config1.png" />
+    <Content Include="Images\mh-inicio.png" />
+    <Content Include="Images\mh-people.png" />
+    <Content Include="Images\mh-people1.png" />
+    <Content Include="Images\mh-perfil.png" />
+    <Content Include="Images\mh-perfil1.png" />
+    <Content Include="Images\mh-sair.png" />
+    <Content Include="Images\mv-addamigo.png" />
+    <Content Include="Images\mv-aguradamigo.png" />
+    <Content Include="Images\mv-album.png" />
+    <Content Include="Images\mv-cmm.png" />
+    <Content Include="Images\mv-delamigo.png" />
+    <Content Include="Images\mv-depo.png" />
+    <Content Include="Images\mv-edit.png" />
+    <Content Include="Images\mv-inicio.png" />
+    <Content Include="Images\mv-lix.png" />
+    <Content Include="Images\mv-people.png" />
+    <Content Include="Images\mv-perfil.png" />
+    <Content Include="Images\mv-recado.png" />
+    <Content Include="Images\mv-video.png" />
+    <Content Include="Images\not-error.png" />
+    <Content Include="Images\not-notice.png" />
+    <Content Include="Images\not-success.png" />
+    <Content Include="Images\not-warning.png" />
+    <Content Include="Images\open-menu.png" />
+    <Content Include="Images\outros\1443756995_add_user.png" />
+    <Content Include="Images\outros\1443757030_birthday_cake.png" />
+    <Content Include="Images\outros\1443757037_checked_user.png" />
+    <Content Include="Images\outros\1443757041_google_web_search.png" />
+    <Content Include="Images\outros\1443757434_trash.png" />
+    <Content Include="Images\perfil\0.jpg" />
+    <Content Include="Images\perfil\0751c38b-ef3d-47a3-8380-050c50b0aa7c\1.jpg" />
+    <Content Include="Images\perfil\10\1.jpg" />
+    <Content Include="Images\perfil\11\1.jpg" />
+    <Content Include="Images\perfil\12\1.jpg" />
+    <Content Include="Images\perfil\13\1.jpg" />
+    <Content Include="Images\perfil\14\1.jpg" />
+    <Content Include="Images\perfil\15\1.jpg" />
+    <Content Include="Images\perfil\16\1.jpg" />
+    <Content Include="Images\perfil\17\1.jpg" />
+    <Content Include="Images\perfil\18\1.jpg" />
+    <Content Include="Images\perfil\19\1.jpg" />
+    <Content Include="Images\perfil\1a3ab194-378a-4212-ad95-559f09b6e2b0\1.jpg" />
+    <Content Include="Images\perfil\1fe808db-226c-4288-a7b7-2ded5bb919b8\1.jpg" />
+    <Content Include="Images\perfil\1\1.jpg" />
+    <Content Include="Images\perfil\1\cmmtmp\20151013100313-01.jpg" />
+    <Content Include="Images\perfil\20af8e90-e129-40e7-b48a-588f2241148d\1.jpg" />
+    <Content Include="Images\perfil\20\1.jpg" />
+    <Content Include="Images\perfil\248be048-ca4d-4891-b0f0-ea473511d037\1.jpg" />
+    <Content Include="Images\perfil\2f2744ce-acd1-4f90-9594-626402c808cb\1.jpg" />
+    <Content Include="Images\perfil\3016580a-e303-4ba6-a1b6-4c1e9a5dcda5\1.jpg" />
+    <Content Include="Images\perfil\363248eb-bbfb-4d35-9852-db0ec39fe3a3\1.jpg" />
+    <Content Include="Images\perfil\3\1.jpg" />
+    <Content Include="Images\perfil\40ab700e-d1f4-47d8-a17d-c4831f5cb8d5\1.jpg" />
+    <Content Include="Images\perfil\47631809-cef4-4239-bc21-e93562a5a160\1.jpg" />
+    <Content Include="Images\perfil\4e3a7ddb-f74e-4778-8a21-dd376512929f\1.jpg" />
+    <Content Include="Images\perfil\5250DCD9-7363-4991-9E0D-A898623C3467\1.jpg" />
+    <Content Include="Images\perfil\5250DCD9-7363-4991-9E0D-A898623C3467\cmmtmp\20151013100313-01.jpg" />
+    <Content Include="Images\perfil\6593ee94-0d84-4008-84ff-a0873413ff27\1.jpg" />
+    <Content Include="Images\perfil\769a067f-b699-4bf1-bcf1-de4efbfe0e13\1.jpg" />
+    <Content Include="Images\perfil\7b4fe09a-b854-4480-9a65-9f6538969012\1.jpg" />
+    <Content Include="Images\perfil\7b4fe09a-b854-4480-9a65-9f6538969012\cmmtmp\20151013100313-01.jpg" />
+    <Content Include="Images\perfil\7\1.jpg" />
+    <Content Include="Images\perfil\7\cmmtmp\20151012190323-2fdcbadc460c641537270093904689a8.jpg" />
+    <Content Include="Images\perfil\87b8d7cf-db7d-45c6-972a-8d856a47d946\1.jpg" />
+    <Content Include="Images\perfil\8d13b8d6-be23-4828-99cb-bb8d9f2e03d2\1.jpg" />
+    <Content Include="Images\perfil\8\1.jpg" />
+    <Content Include="Images\perfil\9388cb84-21dc-4ad6-af29-0ac705ba49e3\1.jpg" />
+    <Content Include="Images\perfil\956ad60d-6f00-400b-88ec-215d35a9cc22\1.jpg" />
+    <Content Include="Images\perfil\9b54e1a4-c804-41bb-b93a-6904f2e6b28f\1.jpg" />
+    <Content Include="Images\perfil\9\1.jpg" />
+    <Content Include="Images\perfil\a12e9231-4f91-4060-8f5b-10e6246ea338\1.jpg" />
+    <Content Include="Images\perfil\a294fa47-a712-4588-ad1b-9fc60c5b83f4\1.jpg" />
+    <Content Include="Images\perfil\acd281bb-70c3-479b-8025-ff41e6026e7b\1.jpg" />
+    <Content Include="Images\perfil\af533bb7-8d39-4f99-b9ae-eead8a7c5575\1.jpg" />
+    <Content Include="Images\perfil\b57fe827-5b3b-40ad-8a77-fa02fb09561f\1.jpg" />
+    <Content Include="Images\perfil\b7c5c7a5-f94f-496f-b917-7f8d6a78c3b9\1.jpg" />
+    <Content Include="Images\perfil\ba4d52bf-9f3c-416c-9fe9-e731bcb65f95\1.jpg" />
+    <Content Include="Images\perfil\bbd4b93d-ead2-471a-b3e4-a23da8ca92a6\1.jpg" />
+    <Content Include="Images\perfil\be7c891b-f14a-4c3f-ab76-43577f18eed9\1.jpg" />
+    <Content Include="Images\perfil\bed0f51e-b4b6-488e-8871-4f5f4a620f74\1.jpg" />
+    <Content Include="Images\perfil\cbdfeb81-414b-4d06-a670-55f5d996b0bc\1.jpg" />
+    <Content Include="Images\perfil\cc629e43-0c80-4245-9d47-7055e1da3598\1.jpg" />
+    <Content Include="Images\perfil\d0b69360-da73-453e-acd5-a8a4835e141c\1.jpg" />
+    <Content Include="Images\perfil\d3d25a6e-e48e-442d-a8d5-cb5db26fc5b4\1.jpg" />
+    <Content Include="Images\perfil\dc132d99-55e7-419a-8289-fe40b70d8d54\1.jpg" />
+    <Content Include="Images\perfil\f64ad559-362b-4e37-ba30-24b065ded71f\1.jpg" />
+    <Content Include="Images\perfil\f8e2a570-917c-4f3e-b47e-d8342104e878\1.jpg" />
+    <Content Include="Images\perfil\ffd7e61b-b65c-41bd-84b2-8965d16893d2\1.jpg" />
+    <Content Include="Images\perfil\old\10\1.jpg" />
+    <Content Include="Images\perfil\old\11\1.jpg" />
+    <Content Include="Images\perfil\old\12\1.jpg" />
+    <Content Include="Images\perfil\old\13\1.jpg" />
+    <Content Include="Images\perfil\old\14\1.jpg" />
+    <Content Include="Images\perfil\old\15\1.jpg" />
+    <Content Include="Images\perfil\old\16\1.jpg" />
+    <Content Include="Images\perfil\old\17\1.jpg" />
+    <Content Include="Images\perfil\old\18\1.jpg" />
+    <Content Include="Images\perfil\old\19\1.jpg" />
+    <Content Include="Images\perfil\old\1\1.jpg" />
+    <Content Include="Images\perfil\old\1\cmmtmp\20151013100313-01.jpg" />
+    <Content Include="Images\perfil\old\20\1.jpg" />
+    <Content Include="Images\perfil\old\3\1.jpg" />
+    <Content Include="Images\perfil\old\7\1.jpg" />
+    <Content Include="Images\perfil\old\7\cmmtmp\20151012190323-2fdcbadc460c641537270093904689a8.jpg" />
+    <Content Include="Images\perfil\old\8\1.jpg" />
+    <Content Include="Images\perfil\old\9\1.jpg" />
+    <Content Include="Images\social\facebook.png" />
+    <Content Include="Images\social\googleplus.png" />
+    <Content Include="Images\social\linkedin.png" />
+    <Content Include="Images\social\twitter.png" />
+    <Content Include="Images\svg\cd-icon-arrow.svg" />
+    <Content Include="Images\svg\cd-icon-budget.svg" />
+    <Content Include="Images\svg\cd-icon-check.svg" />
+    <Content Include="Images\svg\cd-icon-company.svg" />
+    <Content Include="Images\svg\cd-icon-email.svg" />
+    <Content Include="Images\svg\cd-icon-message.svg" />
+    <Content Include="Images\svg\cd-icon-radio.svg" />
+    <Content Include="Images\svg\cd-icon-user.svg" />
+    <Content Include="Images\svg\cd-required.svg" />
+    <Content Include="Images\tipsy1.gif" />
+    <Content Include="Images\tipsyold.gif" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Images\not.psd" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-install-from-signalr\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-install-from-signalr\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-install-from-signalr\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
+    <Content Include="Scripts\jquery.sticky-kit.js" />
+    <Content Include="Scripts\jquery.sticky-kit.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\plugin\check_browser_close.js" />
+    <Content Include="Scripts\plugin\fm.scrollator.jquery.js" />
+    <Content Include="Scripts\plugin\foto.crop.js" />
+    <Content Include="Scripts\plugin\jquery.buttonLoader.min.js" />
+    <Content Include="Scripts\plugin\jquery.inview.js" />
+    <Content Include="Scripts\plugin\jquery.inview.min.js" />
+    <Content Include="Scripts\plugin\simpleUpload.js" />
+    <Content Include="Scripts\plugin\simpleUpload.min.js" />
+    <Content Include="Scripts\plugin\stories\ICON.png" />
+    <Content Include="Scripts\plugin\stories\img\stories\1.jpg" />
+    <Content Include="Scripts\plugin\stories\img\stories\2.jpg" />
+    <Content Include="Scripts\plugin\stories\img\stories\2.mp4" />
+    <Content Include="Scripts\plugin\stories\img\stories\3.png" />
+    <Content Include="Scripts\plugin\stories\img\stories\4.jpg" />
+    <Content Include="Scripts\plugin\stories\img\stories\4.mp4" />
+    <Content Include="Scripts\plugin\stories\img\stories\5.jpg" />
+    <Content Include="Scripts\plugin\stories\img\stories\6.jpg" />
+    <Content Include="Scripts\plugin\stories\img\stories\7.jpg" />
+    <Content Include="Scripts\plugin\stories\img\stories\8.jpg" />
+    <Content Include="Scripts\plugin\stories\img\stories\9.jpg" />
+    <Content Include="Scripts\plugin\stories\img\users\1.jpg" />
+    <Content Include="Scripts\plugin\stories\img\users\2.jpg" />
+    <Content Include="Scripts\plugin\stories\img\users\3.jpg" />
+    <Content Include="Scripts\plugin\stories\img\users\4.jpg" />
+    <Content Include="Scripts\plugin\stories\img\users\5.jpg" />
+    <Content Include="Scripts\plugin\stories\index.html" />
+    <Content Include="Scripts\plugin\stories\skins\facesnap.css" />
+    <Content Include="Scripts\plugin\stories\skins\facesnap.min.css" />
+    <Content Include="Scripts\plugin\stories\skins\snapgram.css" />
+    <Content Include="Scripts\plugin\stories\skins\snapgram.min.css" />
+    <Content Include="Scripts\plugin\stories\skins\snapssenger.css" />
+    <Content Include="Scripts\plugin\stories\skins\snapssenger.min.css" />
+    <Content Include="Scripts\plugin\stories\skins\vemdezap.css" />
+    <Content Include="Scripts\plugin\stories\skins\vemdezap.min.css" />
+    <Content Include="Scripts\plugin\stories\src\zuck.js" />
+    <Content Include="Scripts\plugin\stories\zuck.css" />
+    <Content Include="Scripts\plugin\stories\zuck.js" />
+    <Content Include="Scripts\plugin\stories\zuck.min.css" />
+    <Content Include="Scripts\plugin\stories\zuck.min.js" />
+    <Content Include="Scripts\principal\chat.js" />
+    <Content Include="Scripts\principal\config.js" />
+    <Content Include="Scripts\principal\c\cadcmm.js" />
+    <Content Include="Scripts\principal\c\cmm.js" />
+    <Content Include="Scripts\principal\c\editcmm.js" />
+    <Content Include="Scripts\principal\c\forum.js" />
+    <Content Include="Scripts\principal\c\foto.js" />
+    <Content Include="Scripts\principal\c\membros.js" />
+    <Content Include="Scripts\principal\c\membrospend.js" />
+    <Content Include="Scripts\principal\c\moderadores.js" />
+    <Content Include="Scripts\principal\c\pesqcmm.js" />
+    <Content Include="Scripts\principal\c\topicos.js" />
+    <Content Include="Scripts\principal\lib\buttonloader.js" />
+    <Content Include="Scripts\principal\lib\classie.js" />
+    <Content Include="Scripts\principal\lib\editorhtml.js" />
+    <Content Include="Scripts\principal\lib\html5.js" />
+    <Content Include="Scripts\principal\lib\jquery-2.1.1.js" />
+    <Content Include="Scripts\principal\lib\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\principal\lib\modernizr.js" />
+    <Content Include="Scripts\principal\lib\modernizr.min.js" />
+    <Content Include="Scripts\principal\lib\notification.js" />
+    <Content Include="Scripts\principal\lib\tipsy.js" />
+    <Content Include="Scripts\principal\login.js" />
+    <Content Include="Scripts\principal\master.js" />
+    <Content Include="Scripts\principal\p\amigos.js" />
+    <Content Include="Scripts\principal\p\amigospend.js" />
+    <Content Include="Scripts\principal\p\cadperfil.js" />
+    <Content Include="Scripts\principal\p\comunidades.js" />
+    <Content Include="Scripts\principal\p\depoimentos.js" />
+    <Content Include="Scripts\principal\p\foto.js" />
+    <Content Include="Scripts\principal\p\inicio.js" />
+    <Content Include="Scripts\principal\p\perfil.js" />
+    <Content Include="Scripts\principal\p\recados.js" />
+    <Content Include="Scripts\principal\p\videos.js" />
+    <Content Include="Scripts\principal\social.js" />
+    <Content Include="Scripts\principal\stories.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Comunidade\AddComunidade.cshtml" />
+    <Content Include="Views\Comunidade\EditComunidade.cshtml" />
+    <Content Include="Views\Comunidade\ShowComunidade.cshtml" />
+    <Content Include="Views\Comunidade\ShowDiretorioComunidade.cshtml" />
+    <Content Include="Views\Comunidade\ShowForum.cshtml" />
+    <Content Include="Views\Comunidade\ShowMembroPendente.cshtml" />
+    <Content Include="Views\Comunidade\ShowMembros.cshtml" />
+    <Content Include="Views\Comunidade\ShowModerador.cshtml" />
+    <Content Include="Views\Comunidade\ShowTopico.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Inicio\Index.cshtml" />
+    <Content Include="Views\Perfil\EditPerfil.cshtml" />
+    <Content Include="Views\Perfil\Index.cshtml" />
+    <Content Include="Views\Perfil\ShowAmigos.cshtml" />
+    <Content Include="Views\Perfil\ShowAmigosPendente.cshtml" />
+    <Content Include="Views\Perfil\ShowComunidades.cshtml" />
+    <Content Include="Views\Perfil\ShowDepoimentos.cshtml" />
+    <Content Include="Views\Perfil\ShowPerfil.cshtml" />
+    <Content Include="Views\Perfil\ShowRecados.cshtml" />
+    <Content Include="Views\Perfil\ShowVideos.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\plugin\stories\.gitignore" />
+    <Content Include="Scripts\plugin\stories\LICENSE" />
+    <Content Include="Scripts\plugin\stories\package.json" />
+    <Content Include="Scripts\plugin\stories\README.md" />
+    <Content Include="Views\Shared\_Account.cshtml" />
+    <Content Include="Views\Shared\_ChatPartial.cshtml" />
+    <Content Include="Views\Shared\_Principal.cshtml" />
+    <Content Include="Views\Shared\_PrincipalComunidade.cshtml" />
+    <Content Include="Views\Shared\_PrincipalPerfil.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Posy.V2.Domain.NHibernate\Posy.V2.Domain.NHibernate.csproj">
+      <Project>{12372679-3e3b-40a2-b57a-2380c99e0598}</Project>
+      <Name>Posy.V2.Domain.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Posy.V2.Infra.CrossCutting.Common\Posy.V2.Infra.CrossCutting.Common.csproj">
+      <Project>{020b662b-e18b-4350-a44f-62e7a8c2578e}</Project>
+      <Name>Posy.V2.Infra.CrossCutting.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Posy.V2.Infra.CrossCutting.Identity.NHibernate\Posy.V2.Infra.CrossCutting.Identity.NHibernate.csproj">
+      <Project>{a45421ad-50c3-429e-a5ad-4af1ef48f1f3}</Project>
+      <Name>Posy.V2.Infra.CrossCutting.Identity.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Posy.V2.Infra.CrossCutting.IoC.NHibernate\Posy.V2.Infra.CrossCutting.IoC.NHibernate.csproj">
+      <Project>{eba1ce4d-6612-4fe4-bee5-0d810bf1191e}</Project>
+      <Name>Posy.V2.Infra.CrossCutting.IoC.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Posy.V2.Service.NHibernate\Posy.V2.Service.NHibernate.csproj">
+      <Project>{768c1575-deff-4614-b1be-ffc1d562e0b7}</Project>
+      <Name>Posy.V2.Service.NHibernate</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>14531</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44308/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

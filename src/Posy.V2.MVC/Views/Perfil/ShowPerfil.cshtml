@@ -1,0 +1,61 @@
+﻿@{Posy.V2.Domain.Entities.Perfil PerfilView = @Posy.V2.MVC.Controllers.BaseControllerPerfil.PerfilView; }
+@{
+    Layout = "~/Views/Shared/_PrincipalPerfil.cshtml";
+    ViewBag.Title = "ShowPerfil";
+}
+
+<div class="ms-cnt-blc ms-cnt-perfil">
+    <div class="ms-cnt-tit-blc">
+        <h1 class="ms-tit-blc-txt icon-perfil">@Posy.V2.Infra.CrossCutting.Common.Resources.UIConfig.Perfil</h1>
+        <div class="ms-tit-blc-line"></div>
+    </div>
+    <div class="view-page">@Html.Raw(@PerfilView.PerfilHtml)</div>
+</div>
+<br />
+<div class="ms-cnt-blc ms-cnt-depoimentos" style="display: none;">
+    <div class="view-titulo">
+        <div class="ms-cnt-tit-blc">
+            <h1 class="ms-tit-blc-txt icon-depo">Depoimentos</h1>
+            <div class="ms-tit-blc-line"></div>
+        </div>
+    </div>
+    <div class="view-page-dep"></div>
+</div>
+
+
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#liPerfil").addClass("mn-horiz-active");
+
+            $(".view-page").hide().fadeIn("slow");
+
+            fnView();
+            VisitaPerfil();
+
+            function fnView() {
+                var objLoader = $(".mv-loading").boxLoader();
+
+                $.get("/ajax/depoimento/template/view", { page: 1 }, function (data) {
+
+                    $(".view-page-dep").html(data[1]).hide().fadeIn("slow");
+                    $(".ms-cnt-depoimentos").fadeIn("slow");
+
+                    fnInicializaViewPerfil();
+                }).always(function () {
+                    objLoader.stop();
+                });
+            }
+
+            function VisitaPerfil() {
+                $.post("/visitante");
+            }
+
+        });
+
+    </script>
+}
+

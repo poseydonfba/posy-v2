@@ -1,0 +1,120 @@
+﻿@using Posy.V2.Infra.CrossCutting.Common.Resources
+@model Posy.V2.Infra.CrossCutting.Identity.Model.ExternalLoginConfirmationViewModel
+@{
+    Layout = "~/Views/Shared/_Account.cshtml";
+    ViewBag.Title = @UIConfigLogin.Registrar;
+}
+<h1 class="display-4 text-center">@ViewBag.Title.</h1>
+<h3 class="text-center">@String.Format(UIConfigLogin.AssocieSuaSocialConta, @ViewBag.LoginProvider)</h3>
+@using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h4 class="text-center">@UIConfigLogin.FormularioDeAssociacao</h4>
+    <hr />
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+    <p class="text-info">
+        @Html.Raw(String.Format(UIConfigLogin.ContaSocialSucessoInfo, @ViewBag.LoginProvider))
+        @*You've successfully authenticated with <strong>@ViewBag.LoginProvider</strong>.
+            Please enter a user name for this site below and click the Register button to finish
+            logging in.*@
+    </p>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })*@
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Nome, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Sobrenome, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Sobrenome, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            @Html.LabelFor(m => m.Dia, new { @class = "control-label" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                @Html.DropDownListFor(m => m.Dia, new SelectList(ViewBag.Dia, "Value", "Text"), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                @Html.DropDownListFor(m => m.Mes, new SelectList(ViewBag.Mes, "Value", "Text"), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                @Html.DropDownListFor(m => m.Ano, new SelectList(ViewBag.Ano, "Value", "Text"), new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Sexo, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.Sexo, new SelectList(ViewBag.Sexo, "Value", "Text"), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                @Html.LabelFor(m => m.EstadoCivil, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.EstadoCivil, new SelectList(ViewBag.EstadoCivil, "Value", "Text"), new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <img style="height: 50px; width: 100%; margin-bottom: 8px;" alt="" src="~/Account/ImageCaptcha" />
+
+        @Html.LabelFor(m => m.Captcha, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Captcha, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="@UIConfigLogin.Registrar" class="btn btn-primary btn-lg btn-block" />
+    </div>
+
+    <br /><br /><br />
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function () {
+            $('form').bind('invalid-form.validate', function (error, element) {
+                fnError(element.errorList[0].message);
+            });
+        });
+    </script>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <script type="text/javascript">
+            var errors = @Html.Raw(
+                Json.Encode(
+                    string.Join(
+                        Environment.NewLine,
+                        ViewData.ModelState
+                                .Where(x => x.Value.Errors.Count > 0)
+                                .SelectMany(x => x.Value.Errors)
+                                .Select(error => error.ErrorMessage))
+                    )
+            );
+            fnError(errors.split('\r\n')[0]);
+        </script>
+    }
+}
